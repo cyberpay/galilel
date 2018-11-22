@@ -3269,7 +3269,7 @@ string CWallet::PrepareObfuscationDenominate(int minRounds, int maxRounds)
         BOOST_FOREACH (CAmount v, obfuScationDenominations) {
             // only use the ones that are approved
             bool fAccepted = false;
-            if ((obfuScationPool.sessionDenom & (1 << 0)) && v == ((15000 * COIN) + 10000000)) {
+            if ((obfuScationPool.sessionDenom & (1 << 0)) && v == ((15000 * COIN) + 15000000)) {
                 fAccepted = true;
             } else if ((obfuScationPool.sessionDenom & (1 << 1)) && v == ((10000 * COIN) + 10000000)) {
                 fAccepted = true;
