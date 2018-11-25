@@ -547,7 +547,7 @@ std::string HelpMessage(HelpMessageMode mode)
 #endif // ENABLE_WALLET
     strUsage += HelpMessageOpt("-reindexzerocoin=<n>", strprintf(_("Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)"), 0));
 
-//    strUsage += "  -anonymizegalilelamount=<n>     " + strprintf(_("Keep N GALI anonymized (default: %u)"), 0) + "\n";
+//    strUsage += "  -anonymizegaliamount=<n>     " + strprintf(_("Keep N GALI anonymized (default: %u)"), 0) + "\n";
 //    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Obfuscation by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), 0) + "\n";
 
     strUsage += HelpMessageGroup(_("SwiftX options:"));
@@ -1843,7 +1843,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     }
 
 // XX42 Remove/refactor code below. Until then provide safe defaults
-    nAnonymizeGalilelAmount = 2;
+    nAnonymizeGaliAmount = 2;
 
 //    nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
 //    if (nLiquidityProvider != 0) {
@@ -1852,9 +1852,9 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 //        nZeromintPercentage = 99999;
 //    }
 //
-//    nAnonymizeGalilelAmount = GetArg("-anonymizegalilelamount", 0);
-//    if (nAnonymizeGalilelAmount > 999999) nAnonymizeGalilelAmount = 999999;
-//    if (nAnonymizeGalilelAmount < 2) nAnonymizeGalilelAmount = 2;
+//    nAnonymizeGaliAmount = GetArg("-anonymizegaliamount", 0);
+//    if (nAnonymizeGaliAmount > 999999) nAnonymizeGaliAmount = 999999;
+//    if (nAnonymizeGaliAmount < 2) nAnonymizeGaliAmount = 2;
 
     fEnableSwiftTX = GetBoolArg("-enableswifttx", fEnableSwiftTX);
     nSwiftTXDepth = GetArg("-swifttxdepth", nSwiftTXDepth);
@@ -1868,7 +1868,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nSwiftTXDepth %d\n", nSwiftTXDepth);
-    LogPrintf("Anonymize GALI Amount %d\n", nAnonymizeGalilelAmount);
+    LogPrintf("Anonymize GALI Amount %d\n", nAnonymizeGaliAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
     /* Denominations

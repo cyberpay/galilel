@@ -95,10 +95,10 @@ void OptionsModel::Init()
         settings.setValue("nPreferredDenom", 0);
     nPreferredDenom = settings.value("nPreferredDenom", "0").toLongLong();
 
-    if (!settings.contains("nAnonymizeGalilelAmount"))
-        settings.setValue("nAnonymizeGalilelAmount", 1000);
+    if (!settings.contains("nAnonymizeGaliAmount"))
+        settings.setValue("nAnonymizeGaliAmount", 1000);
 
-    nAnonymizeGalilelAmount = settings.value("nAnonymizeGalilelAmount").toLongLong();
+    nAnonymizeGaliAmount = settings.value("nAnonymizeGaliAmount").toLongLong();
 
     if (!settings.contains("fShowMasternodesTab"))
         settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
@@ -172,8 +172,8 @@ void OptionsModel::Init()
         SoftSetArg("-zeromintpercentage", settings.value("nZeromintPercentage").toString().toStdString());
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
-    if (settings.contains("nAnonymizeGalilelAmount"))
-        SoftSetArg("-anonymizegalilelamount", settings.value("nAnonymizeGalilelAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeGaliAmount"))
+        SoftSetArg("-anonymizegaliamount", settings.value("nAnonymizeGaliAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -267,7 +267,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
         case AnonymizeGaliAmount:
-            return QVariant(nAnonymizeGalilelAmount);
+            return QVariant(nAnonymizeGaliAmount);
         case Listen:
             return settings.value("fListen");
         default:
@@ -401,9 +401,9 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             emit hideOrphansChanged(fHideOrphans);
             break;
         case AnonymizeGaliAmount:
-            nAnonymizeGalilelAmount = value.toInt();
-            settings.setValue("nAnonymizeGalilelAmount", nAnonymizeGalilelAmount);
-            emit anonymizeGaliAmountChanged(nAnonymizeGalilelAmount);
+            nAnonymizeGaliAmount = value.toInt();
+            settings.setValue("nAnonymizeGaliAmount", nAnonymizeGaliAmount);
+            emit anonymizeGaliAmountChanged(nAnonymizeGaliAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();
