@@ -328,7 +328,7 @@ bool CalculateAccumulatorCheckpointWithoutDB(int nHeight, uint256& nCheckpoint, 
             return false;
 
         //make sure this block is eligible for accumulation
-        if (pindex->nHeight < Params().Zerocoin_StartHeight()) {        
+        if (pindex->nHeight < Params().Zerocoin_StartHeight()) {
             pindex = chainActive[pindex->nHeight + 1];
             continue;
         }
