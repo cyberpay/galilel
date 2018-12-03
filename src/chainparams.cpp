@@ -207,6 +207,7 @@ public:
         strSporkKeyOld = "0478c3e932fbe183b2f665de937866cb1cfc5ed4b0bf733b72286f265ffc03ff52dfd669fbb3f77d630e5393da65c721a9a891d2c4c6aa515dfd25ffe545582357";
         strObfuscationPoolDummyAddress = "UZtNU63X1ct8bJULwCPZrh4oF8AE62CVJ1";
         nStartMasternodePayments = 1525192183; // Tue May  1 18:29:43 CEST 2018
+        nRequiredMasternodeCollateral = 15000 * COIN; // Masternode collateral amount
 
         /** Zerocoin */
         zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
@@ -311,6 +312,7 @@ public:
         strSporkKeyOld = "04363509d5c65f5a9ca7ceedad4887007ae85469d249a6f566b788504ee5e105bcf1bbc515f49a7aac3bceb8864bb2ba84bebd92c66ff9022309e2bfbd5f70d11f";
         strObfuscationPoolDummyAddress = "acW3shX2oxMLykakdi9zvjvaX6NBCyVLTw";
         nStartMasternodePayments = 1540587600; // Fri Oct 26 21:00:00 UTC 2018
+        nRequiredMasternodeCollateral = 15000 * COIN; // Masternode collateral amount
         nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
                                        // here because we only have a 8 block finalization window on testnet
     }
