@@ -164,6 +164,12 @@ Litecoin (LTC): MAfouCFTBX4hJWTmAvTpFSuwzUZr4gtxDv
 
 Dogecoin (DOGE): DFY1iAcbX8uQDaFAFQckSGJfYBb6QzTuMi
 
+# Development
+
+Starting from v3.1.0, we are using branches for changes, which will fork the
+chain. Any fixes and improvements, which does not fork the chain, will be
+committed directly into master branch.
+
 # Wallet Screenshots
 
 Since refactoring of Galilel v3.x with PIVX 3.1.1 codebase, the wallet supports
