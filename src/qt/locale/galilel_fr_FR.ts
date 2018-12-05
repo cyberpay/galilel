@@ -2492,7 +2492,7 @@ Les zGALI sont matures lorsqu'elles ont plus de 20 confirmations ET plus de 2 mo
         <translation>Solde total incluant les zGALI non confirmés et immatures</translation>
     </message>
     <message>
-        <source>Total Zerocoin  Balance:</source>
+        <source>Total Zerocoin Balance:</source>
         <translation>Solde total Zerocoin:</translation>
     </message>
     <message>

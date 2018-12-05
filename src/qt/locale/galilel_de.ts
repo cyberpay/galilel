@@ -2549,7 +2549,7 @@ zGALI sind ausgereift wenn sie mehr als 20 Bestätigungen und mehr als 2 Prägun
         <translation>Totales Guthaben, einschließlich unbestätigter und unreifer zGALI</translation>
     </message>
     <message>
-        <source>Total Zerocoin  Balance:</source>
+        <source>Total Zerocoin Balance:</source>
         <translation>Totales Zerocoin Guthaben:</translation>
     </message>
     <message>

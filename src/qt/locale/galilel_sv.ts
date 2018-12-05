@@ -2533,7 +2533,7 @@ zGALI är mogna när de har över 20 bekräftelser OCH över 2 präglingar av sa
         <translation>Totalt Saldo, obekräftade och omogna zGALI inkluderade</translation>
     </message>
     <message>
-        <source>Total Zerocoin  Balance:</source>
+        <source>Total Zerocoin Balance:</source>
         <translation>Totalt Zerocoinsaldo:</translation>
     </message>
     <message>

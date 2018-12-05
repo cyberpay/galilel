@@ -2558,7 +2558,7 @@ zGALI son maduros cuando tienen más de 20 confirmaciones Y más de 2 mints de l
         <translation>Balance total incluyendo zGALI no confirmado e inmaduro</translation>
     </message>
     <message>
-        <source>Total Zerocoin  Balance:</source>
+        <source>Total Zerocoin Balance:</source>
         <translation>Balance total de Zerocoin:</translation>
     </message>
     <message>

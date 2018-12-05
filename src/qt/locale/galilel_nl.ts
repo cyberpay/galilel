@@ -2558,7 +2558,7 @@ zGALI zijn volwassen wanneer zij meer dan 20 bevestigingen hebben EN meer dan 2 
         <translation>Totale Saldi, inclusief onbevestigde en onvolwassen zGALI</translation>
     </message>
     <message>
-        <source>Total Zerocoin  Balance:</source>
+        <source>Total Zerocoin Balance:</source>
         <translation>Totale Zerocoin Saldi:</translation>
     </message>
     <message>

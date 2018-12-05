@@ -2042,7 +2042,7 @@ https://www.transifex.com/galilel-project/galilel-project-translations</translat
         <translation>Balanço Total incluindo não confirmadas e imaturas zGALI</translation>
     </message>
     <message>
-        <source>Total Zerocoin  Balance:</source>
+        <source>Total Zerocoin Balance:</source>
         <translation>Balanço Total Zerocoin:</translation>
     </message>
     <message>
