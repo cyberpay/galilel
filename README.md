@@ -55,7 +55,7 @@ Electrum client.
 
 # Zerocoin Specifications
 
-* Zerocoin v1 activation: block 250000
+* Zerocoin v1 activation: block 245000
 * Zerocoin v2 activation: block 340000 (planned)
 * zGALI Automint: 10%
 * zGALI Rewards (from block 340001): MN 50%, zPoS 50%
