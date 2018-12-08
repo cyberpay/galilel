@@ -976,8 +976,20 @@ bool CheckZerocoinSpend(const CTransaction& tx, bool fVerifySignature, CValidati
         if (newSpend.getTxOutHash() != hashTxOut)
             return state.DoS(100, error("Zerocoinspend does not use the same txout that was used in the SoK"));
 
-        // Skip signature verification during initial block download and until Zerocoin v2 starting height.
-        if (fVerifySignature && chainActive.Height() >= Params().Zerocoin_Block_V2_Start()) {
+        // TODO: rework this code
+        // Get block height of transaction
+        CBigNum bnActualSerial = newSpend.getCoinSerialNumber();
+        uint256 txHash;
+        int nHeight;
+        if (zerocoinDB->ReadCoinSpend(bnActualSerial, txHash)) {
+            CTransaction txMinted;
+            uint256 hashBlock;
+            if (GetTransaction(txHash, txMinted, hashBlock, true))
+                nHeight = mapBlockIndex[hashBlock]->nHeight;
+        }
+
+        // Skip signature verification during initial block download and for broken checksum range
+        if (fVerifySignature && nHeight >= Params().Zerocoin_Block_FirstGoodChecksum()) {
             //see if we have record of the accumulator used in the spend tx
             CBigNum bnAccumulatorValue = 0;
             if (!zerocoinDB->ReadAccumulatorValue(newSpend.getAccumulatorChecksum(), bnAccumulatorValue)) {
@@ -2516,6 +2528,7 @@ bool UpdateZGALISupply(const CBlock& block, CBlockIndex* pindex)
     std::list<libzerocoin::CoinDenomination> listSpends = ZerocoinSpendListFromBlock(block, fFilterInvalid);
 
     // Initialize zerocoin supply to the supply from previous block
+    // GALI specific: valid mints and spents in block header version 3.
     if (pindex->pprev && pindex->pprev->GetBlockHeader().nVersion > 2) {
         for (auto& denom : zerocoinDenomList) {
             pindex->mapZerocoinSupply.at(denom) = pindex->pprev->mapZerocoinSupply.at(denom);

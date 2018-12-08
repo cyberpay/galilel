@@ -139,6 +139,7 @@ public:
         nModifierUpdateBlock = 1;
         nZerocoinStartHeight = 245000;			/* First mint at block 247434 */
         nZerocoinStartTime = 1544216400;		/* Fri Dec  7 21:00:00 UTC 2018 */
+        nBlockFirstGoodChecksum = 2147483646;		/* First block with valid Zerocoin checksums */
         nBlockEnforceSerialRange = 2147483646;		/* (disabled) Enforce serial range starting this block */
         nBlockRecalculateAccumulators = 2147483646;	/* (disabled) Trigger a recalculation of accumulators */
         nBlockFirstFraudulent = 2147483646;		/* (disabled) First block that bad serials emerged */
@@ -263,13 +264,14 @@ public:
         nMaxMoneyOut = 25000000 * COIN;
         nZerocoinStartHeight = 250;			/* First mint at block 314 */
         nZerocoinStartTime = 1541797200;		/* Fri Nov  9 21:00:00 UTC 2018 */
-        nBlockEnforceSerialRange = 2147483646;		/* (disabled) Enforce serial range starting this block */
+        nBlockFirstGoodChecksum = 27000;		/* First block with valid Zerocoin checksums */
+        nBlockEnforceSerialRange = 250;			/* Enforce serial range starting this block */
         nBlockRecalculateAccumulators = 2147483646;	/* (disabled) Trigger a recalculation of accumulators */
         nBlockFirstFraudulent = 2147483646;		/* (disabled) First block that bad serials emerged */
         nBlockLastGoodCheckpoint = 2147483646;		/* (disabled) Last valid accumulator checkpoint */
         nBlockEnforceInvalidUTXO = 2147483646;		/* (disabled) Start enforcing the invalid UTXO's */
         nInvalidAmountFiltered = 0;			/* Amount of invalid coins filtered through exchanges, that should be considered valid */
-        nBlockZerocoinV2 = 99999999;			/* (disabled) The block that zerocoin v2 becomes active */
+        nBlockZerocoinV2 = 250;				/* The block that zerocoin v2 becomes active */
         nEnforceNewSporkKey = 1540760400;		/* Sun Oct 28 21:00:00 UTC 2018: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1541325600;		/* Sun Nov  4 21:00:00 UTC 2018: after that reject old spork key */
 

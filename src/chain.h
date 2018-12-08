@@ -234,7 +234,7 @@ public:
         nTime = block.nTime;
         nBits = block.nBits;
         nNonce = block.nNonce;
-        if(block.nVersion > 2)
+        if(block.nVersion > 3)
             nAccumulatorCheckpoint = block.nAccumulatorCheckpoint;
 
         //Proof of Stake
@@ -479,6 +479,7 @@ public:
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
+        // GALI specific: valid mints and spents in block header version 3.
         if(this->nVersion > 2) {
             READWRITE(nAccumulatorCheckpoint);
             READWRITE(mapZerocoinSupply);
