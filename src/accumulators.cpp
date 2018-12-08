@@ -562,7 +562,7 @@ bool GenerateAccumulatorWitness(const PublicCoin &coin, Accumulator& accumulator
             uint256 nCheckpointSpend = chainActive[pindex->nHeight + 10]->nAccumulatorCheckpoint;
 
             // Skip broken checkpoint range.
-            if (pindex->nHeight >= Params().Zerocoin_Block_FirstGoodChecksum()) {
+            if (nHeightCheckpoint >= Params().Zerocoin_Block_FirstGoodChecksum()) {
                 if (!GetAccumulatorValueFromDB(nCheckpointSpend, coin.getDenomination(), bnAccValue) || bnAccValue == 0)
                     return error("%s : failed to find checksum in database for accumulator", __func__);
 
@@ -573,7 +573,7 @@ bool GenerateAccumulatorWitness(const PublicCoin &coin, Accumulator& accumulator
         }
 
         // Skip broken checkpoint range.
-        if (pindex->nHeight >= Params().Zerocoin_StartHeight() && pindex->nHeight < Params().Zerocoin_Block_FirstGoodChecksum()) {
+        if (nHeightCheckpoint < Params().Zerocoin_Block_FirstGoodChecksum()) {
             isBrokenChecksum = true;
             AddBlockMintsToAccumulator(coin, nHeightMintAdded, pindex, &accumulator, false);
         }
