@@ -22,6 +22,6 @@ No       | No        | Yes
 * Block 286,600: zPoS activation
 * Modified reward structure to generate only integer numbers during PoS / zPoS
   as smallest Zerocoin denomination is 1
-* zGALI Rewards (from block 245,001): zPoS 1 zGALI, MN 12.5 GALI
-* zGALI Rewards (from block 340,001): zPoS 6 zGALI, MN 4 GALI
-* zGALI Rewards (from block 430,001): zPoS 3 zGALI, MN 2 GALI
+* zGALI Rewards (from block 245,001): 1 zGALI
+* zGALI Rewards (from block 340,001): MN 40%, zPoS 60%
+* zGALI Rewards (from block 430,001): MN 40%, zPoS 60%
