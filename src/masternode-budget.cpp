@@ -920,9 +920,9 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
     if (chainActive.Tip() == NULL) return 0;
 
     if (nHeight > 430000) {
-        nSubsidy = 4.5 * COIN;
+        nSubsidy = 5 * COIN;
     } else if (nHeight > 340000) {
-        nSubsidy = 9 * COIN;
+        nSubsidy = 10 * COIN;
     } else if (nHeight > 250000) {
         nSubsidy = 13.5 * COIN;
     } else if (nHeight > 205000) {

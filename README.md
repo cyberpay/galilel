@@ -40,25 +40,27 @@ Electrum client.
 * Minimum Staking Age: 2 Hours
 * Maturity: 120 confirmations
 * Send Eligibility: 6 confirmations
-* Rewards (till block 1500): MN 60%, PoW 40%
-* Rewards (till block 205000): MN 60%, PoS 40%
-* Rewards (from block 205001): MN 70%, PoS 30%
-* Last PoW Block: 1.500
-* Masternode Collateral: 15.000
-* Max Coin Supply (January 2020): 19.035.999 GALI
-* Max Coin Supply (January 2030): 45.315.999 GALI
-* Max Coin Supply (January 2040): 71.595.999 GALI
-* Max Coin Supply (January 2050): 97.875.999 GALI
+* Rewards (till block 1,500): MN 60%, PoW 40%
+* Rewards (till block 205,000): MN 60%, PoS 40%
+* Rewards (from block 205,001): MN 70%, PoS 30%
+* Last PoW Block: 1,500
+* Masternode Collateral: 15,000
+* Max Coin Supply (January 2020): 19,035,999 GALI
+* Max Coin Supply (January 2030): 45,315,999 GALI
+* Max Coin Supply (January 2040): 71,595,999 GALI
+* Max Coin Supply (January 2050): 97,875,999 GALI
 * Dynamic Coin Supply: All transaction fees & zGALI minting fees are burnt
 * Community Donation Address: https://explorer.galilel.cloud/address/UUr5nDmykhun1HWM7mJAqLVeLzoGtx19dX
-* Dev Budget (from block 250001): 10% in monthly superblock
+* Dev Budget (from block 250,001): 10% in monthly superblock
 
 # Zerocoin Specifications
 
-* Zerocoin v1 activation: block 245000
-* Zerocoin v2 activation: block 340000 (planned)
+* Zerocoin v1 activation: block 245,000
+* Zerocoin v2 activation: block 245,000
 * zGALI Automint: 10%
-* zGALI Rewards (from block 340001): MN 50%, zPoS 50%
+* zGALI Rewards (from block 245,001): zPoS 1 zGALI, MN 12.5 GALI
+* zGALI Rewards (from block 340,001): zPoS 6 zGALI, MN 4 GALI
+* zGALI Rewards (from block 430,001): zPoS 3 zGALI, MN 2 GALI
 * zGALI Denominators: 1, 5, 10, 50, 100, 500, 1000, 5000
 * Accumulator Modulus: RSA-2048
 * Maturity: 240 confirmations
@@ -66,11 +68,11 @@ Electrum client.
 * Fees (mint): 0.01 GALI per minted zGALI denomination
 * Fees (spend): No fee
 
-With Zerocoin v2 activation at block 340001 the reward structure becomes
+With Zerocoin v2 activation at block 245,001 the reward structure becomes
 dependent from the staking type. If public Proof-of-Stake (GALI) and staker
 finds a block, 70% paid to masternode and 30% to staker. If private
-Proof-of-Stake (zGALI) and staker finds a block, 50% paid to masternode and 50%
-to staker.
+Proof-of-Stake (zGALI) and staker finds a block, less than 50% paid to
+masternode and rest to staker.
 
 # Proof-of-Work Rewards
 
@@ -87,15 +89,15 @@ Proof-of-Stake will start at block 1501.
 
 Stages  | Block Height    | Reward   | MN  | PoS | Supply     | Runtime | Stage End
 --------|-----------------|----------|-----|-----|------------|---------|-----------
-Stage 1 |      1501-12000 | 100 GALI | 60% | 40% |  1.271.399 |  7 days | 2018-06-02
-Stage 2 |     12001-22000 |  90 GALI | 60% | 40% |  2.171.309 |  7 days | 2018-06-09
-Stage 3 |     22001-42000 |  80 GALI | 60% | 40% |  3.771.229 | 14 days | 2018-06-23
-Stage 4 |    42001-100000 |  70 GALI | 60% | 40% |  7.831.159 | 40 days | 2018-08-02
-Stage 5 |   100001-160000 |  60 GALI | 60% | 40% | 11.431.099 | 42 days | 2018-09-13
-Stage 6 |   160001-205000 |  50 GALI | 60% | 40% | 13.681.049 | 31 days | 2018-10-14
-Stage 7 |   205001-250000 |  25 GALI | 70% | 30% | 14.806.024 | 31 days | 2018-11-14
-Stage 8 |   250001-340000 |  15 GALI | 70% | 30% | 16.156.009 | 62 days | 2019-01-15
-Stage 9 |   340001-430000 |  10 GALI | 70% | 30% | 17.055.999 | 62 days | 2019-03-18
+Stage 1 |      1501-12000 | 100 GALI | 60% | 40% |  1,271,399 |  7 days | 2018-06-02
+Stage 2 |     12001-22000 |  90 GALI | 60% | 40% |  2,171,309 |  7 days | 2018-06-09
+Stage 3 |     22001-42000 |  80 GALI | 60% | 40% |  3,771,229 | 14 days | 2018-06-23
+Stage 4 |    42001-100000 |  70 GALI | 60% | 40% |  7,831,159 | 40 days | 2018-08-02
+Stage 5 |   100001-160000 |  60 GALI | 60% | 40% | 11,431,099 | 42 days | 2018-09-13
+Stage 6 |   160001-205000 |  50 GALI | 60% | 40% | 13,681,049 | 31 days | 2018-10-14
+Stage 7 |   205001-250000 |  25 GALI | 70% | 30% | 14,806,024 | 31 days | 2018-11-14
+Stage 8 |   250001-340000 |  15 GALI | 70% | 30% | 16,156,009 | 62 days | 2019-01-15
+Stage 9 |   340001-430000 |  10 GALI | 70% | 30% | 17,055,999 | 62 days | 2019-03-18
 Stage X |  430001-ongoing |   5 GALI | 70% | 30% |    ongoing | ongoing |    ongoing
 
 # Official Links

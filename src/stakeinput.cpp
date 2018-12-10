@@ -136,7 +136,11 @@ bool CZGaliStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount n
     if (!pwallet->DatabaseMint(dMint))
         return error("%s: failed to database the staked zGALI", __func__);
 
-    for (unsigned int i = 0; i < 3; i++) {
+    // Make zGALI mint amount dependent from current block reward
+    CAmount blockValue = GetBlockValue(chainActive.Height() + 1);
+    CAmount masternodePayment = GetMasternodePayment(chainActive.Height() + 1, blockValue, 0, true);
+
+    for (unsigned int i = 0; i < ((blockValue - masternodePayment) / COIN); i++) {
         CTxOut out;
         CDeterministicMint dMintReward;
         if (!pwallet->CreateZGALIOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))

@@ -1773,9 +1773,9 @@ int64_t GetBlockValue(int nHeight)
 
     /* block rewards. */
     if (nHeight > 430000) {
-        nSubsidy = 4.5 * COIN;
+        nSubsidy = 5 * COIN;
     } else if (nHeight > 340000) {
-        nSubsidy = 9 * COIN;
+        nSubsidy = 10 * COIN;
     } else if (nHeight > 250000) {
         nSubsidy = 13.5 * COIN;
     } else if (nHeight > 205000) {
@@ -1819,7 +1819,15 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 
     // when zGALI is staked, equal payouts.
     if (isZGALIStake) {
-        ret = blockValue * 0.5;
+
+        // start with low staking reward payouts.
+        if (nHeight > 430000) {
+            ret = blockValue - 3 * COIN;
+        } else if (nHeight > 340000) {
+            ret = blockValue - 6 * COIN;
+        } else if (nHeight > Params().Zerocoin_Block_V2_Start()) {
+            ret = blockValue - 1 * COIN;
+        }
     }
 
     return ret;
