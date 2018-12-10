@@ -58,9 +58,9 @@ Electrum client.
 * Zerocoin v1 activation: block 245,000
 * Zerocoin v2 activation: block 245,000
 * zGALI Automint: 10%
-* zGALI Rewards (from block 245,001): zPoS 1 zGALI, MN 12.5 GALI
-* zGALI Rewards (from block 340,001): zPoS 6 zGALI, MN 4 GALI
-* zGALI Rewards (from block 430,001): zPoS 3 zGALI, MN 2 GALI
+* zGALI Rewards (from block 245,001): 1 zGALI
+* zGALI Rewards (from block 340,001): MN 40%, PoS 60%
+* zGALI Rewards (from block 430,001): MN 40%, PoS 60%
 * zGALI Denominators: 1, 5, 10, 50, 100, 500, 1000, 5000
 * Accumulator Modulus: RSA-2048
 * Maturity: 240 confirmations
@@ -80,8 +80,8 @@ Proof-of-Work is used as instamine protection and will end at block 1500.
 
 Block Height   | Reward                 | MN  | PoW | Supply  | Runtime | Stage End
 ---------------|------------------------|-----|-----|---------|---------|-----------
-Block 1        | 220.000 GALI (premine) | 60% | 40% | 220.000 | 0 days  | 2018-05-25
-Block 2 - 1500 |       1 GALI           | 60% | 40% | 221.499 | 1 day   | 2018-05-26
+Block 1        | 220,000 GALI (premine) | 60% | 40% | 220,000 | 0 days  | 2018-05-25
+Block 2 - 1500 |       1 GALI           | 60% | 40% | 221,499 | 1 day   | 2018-05-26
 
 # Proof-of-Stake Rewards
 
