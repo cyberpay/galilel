@@ -1463,7 +1463,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
                 // Drop all information from the zerocoinDB and repopulate
                 if (GetBoolArg("-reindexzerocoin", false)) {
-                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
+                    if (chainActive.Height() > Params().Zerocoin_Block_V2_Start()) {
                         uiInterface.InitMessage(_("Reindexing zerocoin database..."));
                         std::string strError = ReindexZerocoinDB();
                         if (strError != "") {
@@ -1475,7 +1475,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
                 // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
                 if (GetBoolArg("-reindexmoneysupply", false)) {
-                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
+                    if (chainActive.Height() > Params().Zerocoin_Block_V2_Start()) {
                         RecalculateZGALIMinted();
                         RecalculateZGALISpent();
                     }

@@ -71,8 +71,8 @@ available in Electrum client.
 With Zerocoin v2 activation at block 245,001 the reward structure becomes
 dependent from the staking type. If public Proof-of-Stake (GALI) and staker
 finds a block, 70% paid to masternode and 30% to staker. If private
-Proof-of-Stake (zGALI) and staker finds a block, less than 50% paid to
-masternode and rest to staker.
+Proof-of-Stake (zGALI) and staker finds a block, 40% paid to masternode and 60%
+to staker.
 
 # Proof-of-Work Rewards
 

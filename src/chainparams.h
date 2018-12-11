@@ -119,7 +119,6 @@ public:
     /** Height or Time Based Activations **/
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
-    int Zerocoin_StartHeight() const { return nZerocoinStartHeight; }
     int Zerocoin_Block_FirstGoodChecksum() const { return nBlockFirstGoodChecksum; }
     int Zerocoin_Block_EnforceSerialRange() const { return nBlockEnforceSerialRange; }
     int Zerocoin_Block_RecalculateAccumulators() const { return nBlockRecalculateAccumulators; }
@@ -183,7 +182,6 @@ protected:
     int nDefaultSecurityLevel;
     int nZerocoinHeaderVersion;
     int64_t nBudget_Fee_Confirmations;
-    int nZerocoinStartHeight;
     int nZerocoinStartTime;
     int nZerocoinRequiredStakeDepth;
 

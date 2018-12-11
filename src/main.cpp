@@ -1182,7 +1182,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
     if (GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE) && tx.ContainsZerocoins())
         return state.DoS(10, error("AcceptToMemoryPool : Zerocoin transactions are temporarily disabled for maintenance"), REJECT_INVALID, "bad-tx");
 
-    if (!CheckTransaction(tx, chainActive.Height() >= Params().Zerocoin_StartHeight(), true, state))
+    if (!CheckTransaction(tx, chainActive.Height() >= Params().Zerocoin_Block_V2_Start(), true, state))
         return state.DoS(100, error("AcceptToMemoryPool: : CheckTransaction failed"), REJECT_INVALID, "bad-tx");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -1427,7 +1427,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
         *pfMissingInputs = false;
 
 
-    if (!CheckTransaction(tx, chainActive.Height() >= Params().Zerocoin_StartHeight(), true, state))
+    if (!CheckTransaction(tx, chainActive.Height() >= Params().Zerocoin_Block_V2_Start(), true, state))
         return error("AcceptableInputs: : CheckTransaction failed");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -2345,7 +2345,7 @@ void ThreadScriptCheck()
 
 void RecalculateZGALIMinted()
 {
-    CBlockIndex *pindex = chainActive[Params().Zerocoin_StartHeight()];
+    CBlockIndex *pindex = chainActive[Params().Zerocoin_Block_V2_Start()];
     int nHeightEnd = chainActive.Height();
     while (true) {
         if (pindex->nHeight % 1000 == 0)
@@ -2372,7 +2372,7 @@ void RecalculateZGALIMinted()
 
 void RecalculateZGALISpent()
 {
-    CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
+    CBlockIndex* pindex = chainActive[Params().Zerocoin_Block_V2_Start()];
     while (true) {
         if (pindex->nHeight % 1000 == 0)
             LogPrintf("%s : block %d...\n", __func__, pindex->nHeight);
@@ -2413,10 +2413,6 @@ bool RecalculateGALISupply(int nHeightStart)
 
     CBlockIndex* pindex = chainActive[nHeightStart];
     CAmount nSupplyPrev = pindex->pprev->nMoneySupply;
-
-    /* disabled because this is PIVX related. */
-//    if (nHeightStart == Params().Zerocoin_StartHeight())
-//        nSupplyPrev = CAmount(5449796547496199);
 
     while (true) {
         if (pindex->nHeight % 1000 == 0)
@@ -2787,7 +2783,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     if (pindex->nHeight == Params().Zerocoin_Block_RecalculateAccumulators() + 1) {
         RecalculateZGALIMinted();
         RecalculateZGALISpent();
-        RecalculateGALISupply(Params().Zerocoin_StartHeight());
+        RecalculateGALISupply(Params().Zerocoin_Block_V2_Start());
     }
 
     //Track zGALI money supply in the block index
@@ -3725,7 +3721,7 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
         return state.DoS(50, error("CheckBlockHeader() : proof of work failed"),
             REJECT_INVALID, "high-hash");
 
-    // Version 4 header must be used after Params().Zerocoin_StartHeight(). And never before.
+    // Version 4 header must be used after Params().Zerocoin_Block_V2_Start(). And never before.
     if (block.GetBlockTime() > Params().Zerocoin_StartTime()) {
         if(block.nVersion < Params().Zerocoin_HeaderVersion())
             return state.DoS(50, error("CheckBlockHeader() : block version must be above 4 after ZerocoinStartHeight"),
