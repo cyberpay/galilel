@@ -78,10 +78,10 @@ to staker.
 
 Proof-of-Work is used as instamine protection and will end at block 1500.
 
-Block Height   | Reward                 | MN  | PoW | Supply  | Runtime | Stage End
----------------|------------------------|-----|-----|---------|---------|-----------
-Block 1        | 220,000 GALI (premine) | 60% | 40% | 220,000 | 0 days  | 2018-05-25
-Block 2 - 1500 |       1 GALI           | 60% | 40% | 221,499 | 1 day   | 2018-05-26
+Block Height    | Reward                 | MN  | PoW | Supply  | Runtime | Stage End
+----------------|------------------------|-----|-----|---------|---------|-----------
+Block 1         | 220,000 GALI (premine) | 60% | 40% | 220,000 | 0 days  | 2018-05-25
+Block 2 - 1,500 |       1 GALI           | 60% | 40% | 221,499 | 1 day   | 2018-05-26
 
 # Proof-of-Stake Rewards
 
@@ -89,16 +89,16 @@ Proof-of-Stake will start at block 1501.
 
 Stages  | Block Height    | Reward    | MN  | PoS | Supply     | Runtime | Stage End
 --------|-----------------|-----------|-----|-----|------------|---------|-----------
-Stage 1 |      1501-12000 |  100 GALI | 60% | 40% |  1,271,399 |  7 days | 2018-06-02
-Stage 2 |     12001-22000 |   90 GALI | 60% | 40% |  2,171,309 |  7 days | 2018-06-09
-Stage 3 |     22001-42000 |   80 GALI | 60% | 40% |  3,771,229 | 14 days | 2018-06-23
-Stage 4 |    42001-100000 |   70 GALI | 60% | 40% |  7,831,159 | 40 days | 2018-08-02
-Stage 5 |   100001-160000 |   60 GALI | 60% | 40% | 11,431,099 | 42 days | 2018-09-13
-Stage 6 |   160001-205000 |   50 GALI | 60% | 40% | 13,681,049 | 31 days | 2018-10-14
-Stage 7 |   205001-250000 |   25 GALI | 70% | 30% | 14,806,024 | 31 days | 2018-11-14
-Stage 8 |   250001-340000 | 13.5 GALI | 70% | 30% | 16,156,009 | 62 days | 2019-01-15
-Stage 9 |   340001-430000 |   10 GALI | 70% | 30% | 17,055,999 | 62 days | 2019-03-18
-Stage X |  430001-ongoing |    5 GALI | 70% | 30% |    ongoing | ongoing |    ongoing
+Stage 1 |    1,501-12,000 |  100 GALI | 60% | 40% |  1,271,399 |  7 days | 2018-06-02
+Stage 2 |   12,001-22,000 |   90 GALI | 60% | 40% |  2,171,309 |  7 days | 2018-06-09
+Stage 3 |   22,001-42,000 |   80 GALI | 60% | 40% |  3,771,229 | 14 days | 2018-06-23
+Stage 4 |  42,001-100,000 |   70 GALI | 60% | 40% |  7,831,159 | 40 days | 2018-08-02
+Stage 5 | 100,001-160,000 |   60 GALI | 60% | 40% | 11,431,099 | 42 days | 2018-09-13
+Stage 6 | 160,001-205,000 |   50 GALI | 60% | 40% | 13,681,049 | 31 days | 2018-10-14
+Stage 7 | 205,001-250,000 |   25 GALI | 70% | 30% | 14,806,024 | 31 days | 2018-11-14
+Stage 8 | 250,001-340,000 | 13.5 GALI | 70% | 30% | 16,156,009 | 62 days | 2019-01-15
+Stage 9 | 340,001-430,000 |   10 GALI | 70% | 30% | 17,055,999 | 62 days | 2019-03-18
+Stage X | 430,001-ongoing |    5 GALI | 70% | 30% |    ongoing | ongoing |    ongoing
 
 # Official Links
 
@@ -117,6 +117,8 @@ Block Explorer (Testnet): https://explorer.testnet.galilel.cloud/
 BitcoinTalk Announcement: https://bittcointalk.galilel.cloud
 
 Twitter: https://twitter.com/GalilelEN
+
+Facebook: https://facebook.com/GalilelEN
 
 Discord: https://discord.galilel.cloud
 
@@ -154,7 +156,7 @@ CoinGecko: https://coingecko.com/en/coins/galilel
 
 WorldCoinIndex: https://worldcoinindex.com/coin/galilel
 
-Coinpaprika: https://coinpaprika.com/coin/gali-galilel/
+Dextro: https://dextro.io/
 
 # Donations
 
