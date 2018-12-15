@@ -182,6 +182,10 @@ public:
         vSeeds.push_back(CDNSSeedData("seed2.galilel.cloud", "seed2.galilel.cloud")); // 2nd DNS Seeder from mbroemme
         vSeeds.push_back(CDNSSeedData("seed3.galilel.cloud", "seed3.galilel.cloud")); // 3rd DNS Seeder from mbroemme
         vSeeds.push_back(CDNSSeedData("seed4.galilel.cloud", "seed4.galilel.cloud")); // 4th DNS Seeder from mbroemme
+        vSeeds.push_back(CDNSSeedData("seed5.galilel.cloud", "seed5.galilel.cloud")); // 5th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed6.galilel.cloud", "seed6.galilel.cloud")); // 6th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed7.galilel.cloud", "seed7.galilel.cloud")); // 7th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed8.galilel.cloud", "seed8.galilel.cloud")); // 8th DNS Seeder from gridscale.io
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 68);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 16);
@@ -287,6 +291,10 @@ public:
         vSeeds.push_back(CDNSSeedData("seed2.testnet.galilel.cloud", "seed2.testnet.galilel.cloud"));
         vSeeds.push_back(CDNSSeedData("seed3.testnet.galilel.cloud", "seed3.testnet.galilel.cloud"));
         vSeeds.push_back(CDNSSeedData("seed4.testnet.galilel.cloud", "seed4.testnet.galilel.cloud"));
+        vSeeds.push_back(CDNSSeedData("seed5.testnet.galilel.cloud", "seed5.testnet.galilel.cloud"));
+        vSeeds.push_back(CDNSSeedData("seed6.testnet.galilel.cloud", "seed6.testnet.galilel.cloud"));
+        vSeeds.push_back(CDNSSeedData("seed7.testnet.galilel.cloud", "seed7.testnet.galilel.cloud"));
+        vSeeds.push_back(CDNSSeedData("seed8.testnet.galilel.cloud", "seed8.testnet.galilel.cloud"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);  // Testnet galilel addresses start with 'a'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 18);  // Testnet galilel script addresses start with '8' or '9'
