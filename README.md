@@ -26,6 +26,9 @@ On Masternode (gIOMN) implements a shared blockchain to run one-to-many wallet
 daemons in a client server model. It is comparable to "Instant On" model
 available in Electrum client.
 
+Galilel v3.1.0 is the worlds first crypto currency which has proportional
+Zerocoin Proof-of-Stake (zPoS) rewards depending on the block reward!
+
 # Coin Specifications
 
 * Coin Name: Galilel
@@ -157,6 +160,10 @@ CoinGecko: https://coingecko.com/en/coins/galilel
 WorldCoinIndex: https://worldcoinindex.com/coin/galilel
 
 Dextro: https://dextro.io/
+
+Coinranking: https://coinranking.com/coin/galilel-gali
+
+CoinLore: https://coinlore.com/coin/galilel
 
 # Donations
 
