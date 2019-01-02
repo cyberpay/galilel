@@ -884,7 +884,7 @@ bool CheckZerocoinMint(const uint256& txHash, const CTxOut& txout, CValidationSt
 
 bool ContextualCheckZerocoinMint(const CTransaction& tx, const PublicCoin& coin, const CBlockIndex* pindex)
 {
-    if (pindex->nHeight >= Params().Zerocoin_Block_V2_Start() && Params().NetworkID() != CBaseChainParams::TESTNET) {
+    if (pindex->nHeight >= Params().Zerocoin_Block_V2_Start()) {
         //See if this coin has already been added to the blockchain
         uint256 txid;
         int nHeight;
@@ -1792,19 +1792,14 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 {
     int64_t ret = 0;
 
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight < 200) {
-            return 0;
-        }
-    }
-
+    // fixed staking and masternode reward distribution.
     if (nHeight > 205000) {
         ret = blockValue * 0.7;
     } else if (nHeight > 1) {
         ret = blockValue * 0.6;
     }
 
-    // when zGALI is staked, equal payouts.
+    // when zGALI is staked, better payouts.
     if (isZGALIStake) {
 
         // start with low staking reward payouts.
