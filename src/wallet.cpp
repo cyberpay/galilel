@@ -1476,7 +1476,7 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate)
             //If this is a zapwallettx, need to readd zgali
             if (fCheckZGALI && pindex->nHeight >= Params().Zerocoin_Block_V2_Start()) {
                 list<CZerocoinMint> listMints;
-                BlockToZerocoinMintList(block, listMints, true);
+                BlockToZerocoinMintList(block, listMints);
 
                 for (auto& m : listMints) {
                     if (IsMyMint(m.GetValue())) {

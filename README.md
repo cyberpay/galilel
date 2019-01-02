@@ -123,6 +123,8 @@ Twitter: https://twitter.com/GalilelEN
 
 Facebook: https://facebook.com/GalilelEN
 
+YouTube: https://youtube.com/channel/UC26rKBciicXp33dK8NkALmg
+
 Discord: https://discord.galilel.cloud
 
 Know Your Developer (KYD): https://review.kydcoin.io/galicoin/
@@ -164,6 +166,14 @@ Dextro: https://dextro.io/
 Coinranking: https://coinranking.com/coin/galilel-gali
 
 CoinLore: https://coinlore.com/coin/galilel
+
+MNTrend: https://mntrend.com/en/currencies/GALI
+
+CoinMarketDaddy: https://coinmarketdaddy.com/currencies/galilel/
+
+I Host MN: https://ihostmn.com/hostmn.php?coin=GALI
+
+MN ROI: https://www.mnroi.info/coin/GALI
 
 # Donations
 

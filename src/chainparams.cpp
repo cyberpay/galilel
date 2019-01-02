@@ -140,10 +140,6 @@ public:
         nZerocoinStartTime = 1544216400;		/* Fri Dec  7 21:00:00 UTC 2018 */
         nBlockFirstGoodChecksum = 285600;		/* First block with valid Zerocoin checksums */
         nBlockEnforceSerialRange = 245000;		/* Enforce serial range starting this block */
-        nBlockRecalculateAccumulators = 2147483646;	/* (disabled) Trigger a recalculation of accumulators */
-        nBlockFirstFraudulent = 2147483646;		/* (disabled) First block that bad serials emerged */
-        nBlockLastGoodCheckpoint = 2147483646;		/* (disabled) Last valid accumulator checkpoint */
-        nBlockEnforceInvalidUTXO = 2147483646;		/* (disabled) Start enforcing the invalid UTXO's */
         nBlockZerocoinV2 = 245000;			/* First mint at block 247434 */
         nEnforceNewSporkKey = 1527822208;		/* Fri Jun  1 05:03:28 CEST 2018: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1528427008;		/* Fri Jun  8 05:03:28 CEST 2018: after that reject old spork key */
@@ -267,10 +263,6 @@ public:
         nZerocoinStartTime = 1541797200;		/* Fri Nov  9 21:00:00 UTC 2018 */
         nBlockFirstGoodChecksum = 27000;		/* First block with valid Zerocoin checksums */
         nBlockEnforceSerialRange = 250;			/* Enforce serial range starting this block */
-        nBlockRecalculateAccumulators = 2147483646;	/* (disabled) Trigger a recalculation of accumulators */
-        nBlockFirstFraudulent = 2147483646;		/* (disabled) First block that bad serials emerged */
-        nBlockLastGoodCheckpoint = 2147483646;		/* (disabled) Last valid accumulator checkpoint */
-        nBlockEnforceInvalidUTXO = 2147483646;		/* (disabled) Start enforcing the invalid UTXO's */
         nBlockZerocoinV2 = 250;				/* First mint at block 314 */
         nEnforceNewSporkKey = 1540760400;		/* Sun Oct 28 21:00:00 UTC 2018: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1541325600;		/* Sun Nov  4 21:00:00 UTC 2018: after that reject old spork key */
