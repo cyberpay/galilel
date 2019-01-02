@@ -140,11 +140,27 @@ bool CZGaliStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount n
     CAmount blockValue = GetBlockValue(chainActive.Height() + 1);
     CAmount masternodePayment = GetMasternodePayment(chainActive.Height() + 1, blockValue, 0, true);
 
-    for (unsigned int i = 0; i < ((blockValue - masternodePayment) / COIN); i++) {
+    // dynamic zPoS v2 which determines the closest denomation to the current reward
+    CAmount nValue = blockValue - masternodePayment;
+    while (true) {
+
+        // nothing left for minting
+        if (nValue < 1 * COIN)
+            break;
+
+        // mint a coin with the closest denomination to what is being requested
+        libzerocoin::CoinDenomination denomination = libzerocoin::AmountToClosestDenomination(nValue, nValue);
+        if (denomination == libzerocoin::ZQ_ERROR)
+            return error("%s: failed to create closest denomination", __func__);
+
+        libzerocoin::ZerocoinDenominationToAmount(denomination);
+
         CTxOut out;
         CDeterministicMint dMintReward;
-        if (!pwallet->CreateZGALIOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
+
+        if (!pwallet->CreateZGALIOutPut(denomination, out, dMintReward))
             return error("%s: failed to create zGALI output", __func__);
+
         vout.emplace_back(out);
 
         if (!pwallet->DatabaseMint(dMintReward))
