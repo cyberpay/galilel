@@ -1,8 +1,8 @@
 # Introduction
 
-The first Proof-of-Work, Proof-of-Stake and Proof-of-Burn crypto currency with
-Hybrid Consensus Algorithm and Masternode voting for period based reward
-burning.
+The first Proof-of-Work, Proof-of-Stake, Proof-of-Burn and Proof-of-Transaction
+general purpose crypto currency with Hybrid Consensus Algorithm, Dynamic
+Zerocoin and Masternode voting for period based reward burning.
 
 Galilel Coin (GALI and zGALI) is an open-source public and private
 Proof-of-Stake digital crypto currency for fast (using SwiftX), private
@@ -167,6 +167,8 @@ Coinranking: https://coinranking.com/coin/galilel-gali
 
 CoinLore: https://coinlore.com/coin/galilel
 
+Gremlins Marketing: http://gremlinsmarketing.com/galilel/
+
 MNTrend: https://mntrend.com/en/currencies/GALI
 
 CoinMarketDaddy: https://coinmarketdaddy.com/currencies/galilel/
@@ -174,6 +176,10 @@ CoinMarketDaddy: https://coinmarketdaddy.com/currencies/galilel/
 I Host MN: https://ihostmn.com/hostmn.php?coin=GALI
 
 MN ROI: https://www.mnroi.info/coin/GALI
+
+PoS List: https://www.poslist.org/
+
+Nodeasy: https://nodeasy.com/currencies/Galilel
 
 # Donations
 
