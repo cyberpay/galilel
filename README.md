@@ -133,9 +133,17 @@ Know Your Developer (KYD): https://review.kydcoin.io/galicoin/
 
 Graviex: https://graviex.net/markets/galibtc
 
-Raisex: https://raisex.io/trade/GALI_BTC
+Crex24: https://crex24.com/exchange/GALI-BTC
 
 Aiodex: https://aiodex.com/exchange/GALI_BTC
+
+Cratex (BTC): https://cratex.io/index.php?pair=GALI/BTC
+
+Cratex (LTC): https://cratex.io/index.php?pair=GALI/LTC
+
+Cratex (BTCZ): https://cratex.io/index.php?pair=GALI/BTCZ
+
+Raisex: https://raisex.io/trade/GALI_BTC
 
 # Promotions
 
