@@ -135,7 +135,9 @@ Graviex: https://graviex.net/markets/galibtc
 
 Crex24: https://crex24.com/exchange/GALI-BTC
 
-Aiodex: https://aiodex.com/exchange/GALI_BTC
+Aiodex (BTC): https://aiodex.com/exchange/GALI_BTC
+
+Aiodex (GEEK): https://aiodex.com/exchange/GALI_GEEK
 
 Cratex (BTC): https://cratex.io/index.php?pair=GALI/BTC
 
