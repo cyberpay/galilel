@@ -153,6 +153,9 @@ bool CZGaliStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount n
         if (denomination == libzerocoin::ZQ_ERROR)
             return error("%s: failed to create closest denomination", __func__);
 
+        // recalculate remaining value
+        nValue = nValue * COIN;
+
         libzerocoin::ZerocoinDenominationToAmount(denomination);
 
         CTxOut out;
