@@ -1,5 +1,5 @@
 ---
-name: "galilel-linux-3.1"
+name: "galilel-linux-3.2"
 enable_cache: true
 suites:
 - "bionic"
