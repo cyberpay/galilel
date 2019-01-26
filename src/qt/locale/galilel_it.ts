@@ -827,7 +827,7 @@ Indirizzo: %4
     <message>
         <source>Staking is active
  MultiSend: %1</source>
-        <translation>Lo Stacking è attivo
+        <translation>Lo Staking è attivo
 MultiSend: %1</translation>
     </message>
     <message>
