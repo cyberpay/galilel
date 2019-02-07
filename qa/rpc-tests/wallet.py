@@ -8,7 +8,7 @@
 # Does the following:
 #   a) creates 3 nodes, with an empty chain (no blocks).
 #   b) node0 mines a block
-#   c) node1 mines 32 blocks, so now node 0 has 60001 gaGALI, node 1 has 4250 GALI, node2 has none.
+#   c) node1 mines 32 blocks, so now node 0 has 60001 GALI, node 1 has 4250 GALI, node2 has none.
 #   d) node0 sends 601 GALI to node2, in two transactions (301 GALI, then 300 GALI).
 #   e) node0 mines a block, collects the fee on the second transaction
 #   f) node1 mines 16 blocks, to mature node0's just-mined block

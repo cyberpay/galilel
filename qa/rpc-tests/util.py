@@ -6,8 +6,6 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-# Helpful routines for regression testing
-
 # Add python-bitcoinrpc to module search path:
 import os
 import sys
