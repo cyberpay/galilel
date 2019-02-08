@@ -44,6 +44,7 @@ extern int nPreferredDenom;
 extern int nAnonymizeGaliAmount;
 extern int nLiquidityProvider;
 extern bool fEnableZeromint;
+extern bool fEnableAutoConvert;
 extern int64_t enforceMasternodePaymentsTime;
 extern std::string strMasterNodeAddr;
 extern int keysLoaded;
