@@ -13,18 +13,16 @@ of users will be responsible for maintaining the application and data so that
 there is no single point of failure.
 
 While Zerocoin solves the traceable reward generation problem, Galilel will
-implement hybrid offline Proof-of-Stake (ghPoS) for public and private coins
-which is always on with 10% (public) and 20% (private) of the block reward paid
-out if offline wallet finds a block. The Term Deposit (gTD) function allow to
-lock coins for a certain period and generate predictable rewards. Masternode
-owners get the possibility to vote for reward reduction or complete burning for
-a specific period to reduce coin generation. The Galilel Money Supply Control
-(gMSC), effectively Proof-of-Burn v2 burns only rewards, never term deposits
-and development budget. The period for coin burning will be 1 month with a
-range between 0% - 100%. Every month is applicable for voting. Galilel Instant
-On Masternode (gIOMN) implements a shared blockchain to run one-to-many wallet
-daemons in a client server model. It is comparable to "Instant On" model
-available in Electrum client.
+implement hybrid mobile Proof-of-Stake (ghPoS) for public and private coins.
+The Term Deposit (gTD) function allow to lock coins for a certain period and
+generate predictable rewards. Masternode owners get the possibility to vote for
+reward reduction or complete burning for a specific period to reduce coin
+generation. The Galilel Money Supply Control (gMSC), effectively Proof-of-Burn
+v2 burns only rewards, never term deposits and development budget. The period
+for coin burning will be 1 month with a range between 0% - 100%. Every month is
+applicable for voting. Galilel Instant On Masternode (gIOMN) implements a
+shared blockchain to run one-to-many wallet daemons in a client server model.
+It is comparable to "Instant On" model available in Electrum client.
 
 Galilel v3.1.0 is the worlds first crypto currency which has proportional
 Zerocoin Proof-of-Stake (zPoS) rewards depending on the block reward!
@@ -190,6 +188,14 @@ MN ROI: https://www.mnroi.info/coin/GALI
 PoS List: https://www.poslist.org/
 
 Nodeasy: https://nodeasy.com/currencies/Galilel
+
+Simpleco.in: https://simpleco.in/
+
+Pecunia: https://pecuniaplatform.io/
+
+GIN Platform: https://p.ginplatform.io/
+
+Kalkulus Hub: https://hub.kalkul.us/
 
 # Donations
 

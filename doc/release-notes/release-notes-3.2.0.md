@@ -27,6 +27,8 @@ No       | No        | Yes
 
 ### Changelog v3.2.0
 
-* Fixed "Stake Spent" attack, protocol change at Sat Feb  2 10:00:00 UTC 2019
+* Fixed "Stake Spent" attack for PoS and zPoS, protocol change at
+  Mon Feb 18 10:00:00 UTC 2019
 * Stability improvements for Win32/Win64, switching build environment to
   POSIX MinGW
+* Added RISC-V architecture to default builds
