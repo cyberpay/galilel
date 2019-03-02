@@ -30,7 +30,7 @@ Output: `464a0eb70ea91c94295214df48c47baa72b3876cfb658744aaf863c7b5bf1ff0` -
 This is the collateral hash, copy this output for the next step.
 
 In this transaction we prepare collateral for "_cool-project_". This proposal
-will pay _1200_ GALI, _12_ times over the course of a year totaling _24000_
+will pay _1200_ GALI, _12_ times over the course of a year totaling _14400_
 GALI.
 
 **Warning -- if you change any fields within this command, the collateral
