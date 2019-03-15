@@ -4147,7 +4147,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         std::vector<CTxIn> galiInputs;
         std::vector<CTxIn> zGALIInputs;
 
-        for (CTxIn stakeIn : stakeTxIn.vin) {
+        for (const CTxIn& stakeIn : stakeTxIn.vin) {
             if(stakeIn.scriptSig.IsZerocoinSpend()){
                 zGALIInputs.push_back(stakeIn);
             }else{
@@ -4161,8 +4161,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         // Check for serial double spent on the same block, TODO: Move this to the proper method..
 
         vector<CBigNum> inBlockSerials;
-        for (CTransaction tx : block.vtx) {
-            for (CTxIn in: tx.vin) {
+        for (const CTransaction& tx : block.vtx) {
+            for (const CTxIn& in: tx.vin) {
                 if(nHeight >= Params().Zerocoin_Block_V2_Start()) {
                     if (in.scriptSig.IsZerocoinSpend()) {
                         CoinSpend spend = TxInToZerocoinSpend(in);
@@ -4177,7 +4177,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                 if(tx.IsCoinStake()) continue;
                 if(hasGALIInputs)
                     // Check if coinstake input is double spent inside the same block
-                    for (CTxIn galiIn : galiInputs){
+                    for (const CTxIn& galiIn : galiInputs){
                         if(galiIn.prevout == in.prevout){
                             // double spent coinstake input inside block
                             return error("%s: double spent coinstake input inside block", __func__);
@@ -4211,10 +4211,10 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                 // Increase amount of read blocks
                 readBlock++;
                 // Loop through every input from said block
-                for (CTransaction t : bl.vtx) {
-                    for (CTxIn in: t.vin) {
+                for (const CTransaction& t : bl.vtx) {
+                    for (const CTxIn& in: t.vin) {
                         // Loop through every input of the staking tx
-                        for (CTxIn stakeIn : galiInputs) {
+                        for (const CTxIn& stakeIn : galiInputs) {
                             // if it's already spent
 
                             // First regular staking check
@@ -4244,12 +4244,12 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             // Now that this loop if completed. Check if we have zGALI inputs.
             if(hasZGALIInputs){
 
-                for (CTxIn zGaliInput : zGALIInputs) {
+                for (const CTxIn& zGaliInput : zGALIInputs) {
                     CoinSpend spend = TxInToZerocoinSpend(zGaliInput);
 
                     // First check if the serials were not already spent on the forked blocks.
                     CBigNum coinSerial = spend.getCoinSerialNumber();
-                    for(CBigNum serial : vBlockSerials){
+                    for(const CBigNum& serial : vBlockSerials){
                         if(serial == coinSerial){
                             return state.DoS(100,
                                              error("%s: serial double spent on fork",
@@ -4268,7 +4268,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                     }
 
                     if (!ContextualCheckZerocoinSpendNoSerialCheck(stakeTxIn, spend, pindex, 0))
-                        return state.DoS(100,error("%s: ContextualCheckZerocoinSpend failed for tx %s", __func__,
+                        return state.DoS(100,error("%s: forked chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
                                                    stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zgali");
 
                     // Now only the ZKP left..
@@ -4294,7 +4294,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         // If the stake is not a zPoS then let's check if the inputs were spent on the main chain
         const CCoinsViewCache coins(pcoinsTip);
         if(!stakeTxIn.IsZerocoinSpend()) {
-            for (CTxIn in: stakeTxIn.vin) {
+            for (const CTxIn& in: stakeTxIn.vin) {
                 const CCoins* coin = coins.AccessCoins(in.prevout.hash);
 
                 if(!coin && !isBlockFromFork){
@@ -4310,6 +4310,15 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                     }
                 }
             }
+        } else {
+            if(!isBlockFromFork)
+                for (const CTxIn& zGaliInput : zGALIInputs) {
+                        CoinSpend spend = TxInToZerocoinSpend(zGaliInput);
+                        if (!ContextualCheckZerocoinSpend(stakeTxIn, spend, pindex, 0))
+                            return state.DoS(100,error("%s: main chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
+                                    stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zpiv");
+                }
+
         }
 
     }
