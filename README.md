@@ -123,7 +123,11 @@ Facebook: https://facebook.com/GalilelEN
 
 YouTube: https://youtube.com/channel/UC26rKBciicXp33dK8NkALmg
 
+Instagram: https://instagram.com/galilel_en/
+
 Discord: https://discord.galilel.cloud
+
+Telegram: https://t.me/GalilelEN
 
 Know Your Developer (KYD): https://review.kydcoin.io/galicoin/
 
@@ -144,6 +148,16 @@ Cratex (LTC): https://cratex.io/index.php?pair=GALI/LTC
 Cratex (BTCZ): https://cratex.io/index.php?pair=GALI/BTCZ
 
 Raisex: https://raisex.io/trade/GALI_BTC
+
+MCT+: https://trade.mct.plus/
+
+FinexBox: https://www.finexbox.com/market/pair/GALI-BTC.html
+
+Block DX: https://blocknet.co/galilel-2/
+
+Bisq: https://bisq.network/markets/?currency=gali_btc
+
+Amsterdex: https://amsterdex.com/exchange?market=gali
 
 # Promotions
 
@@ -196,6 +210,20 @@ Pecunia: https://pecuniaplatform.io/
 GIN Platform: https://p.ginplatform.io/
 
 Kalkulus Hub: https://hub.kalkul.us/
+
+CryptoCompare: https://www.cryptocompare.com/coins/gali/overview
+
+Pecunia: https://pecuniaplatform.io/99HOST
+
+Blockspot.io: https://blockspot.io/coin/galilel/
+
+Crypos: https://crypos.io/
+
+Masternodes Germany: https://masternodes-germany.de/
+
+# Merchants
+
+Dextro: https://dextro.io/
 
 # Donations
 
