@@ -145,7 +145,12 @@ static const CRPCConvertParam vRPCConvertParams[] =
         {"searchdzgali", 1},
         {"searchdzgali", 2},
         {"getaccumulatorvalues", 0},
+        {"getaccumulatorwitness",2},
+        {"getmintsvalues", 2},
         {"enableautomintaddress", 0},
+        {"getmintsinblocks", 0},
+        {"getmintsinblocks", 1},
+        {"getmintsinblocks", 2},
         {"getfeeinfo", 0}
     };
 
