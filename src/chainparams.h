@@ -120,6 +120,7 @@ public:
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
     int Zerocoin_Block_FirstGoodChecksum() const { return nBlockFirstGoodChecksum; }
+    int Zerocoin_Block_FirstMint() const { return nBlockFirstMint; }
     int Zerocoin_Block_EnforceSerialRange() const { return nBlockEnforceSerialRange; }
     int Zerocoin_StartTime() const { return nZerocoinStartTime; }
     int Zerocoin_Block_V2_Start() const { return nBlockZerocoinV2; };
@@ -180,6 +181,7 @@ protected:
     int nZerocoinRequiredStakeDepth;
 
     int nBlockFirstGoodChecksum;
+    int nBlockFirstMint;
     int nBlockEnforceSerialRange;
     int nBlockZerocoinV2;
 };

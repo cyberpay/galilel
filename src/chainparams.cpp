@@ -138,9 +138,10 @@ public:
         nLastPOWBlock = 1500;
         nModifierUpdateBlock = 1;
         nZerocoinStartTime = 1544216400;		/* Fri Dec  7 21:00:00 UTC 2018 */
-        nBlockFirstGoodChecksum = 285600;		/* First block with valid Zerocoin checksums */
-        nBlockEnforceSerialRange = 245000;		/* Enforce serial range starting this block */
-        nBlockZerocoinV2 = 245000;			/* First mint at block 247434 */
+        nBlockFirstGoodChecksum = 285471;		/* First block with valid Zerocoin checksums */
+        nBlockFirstMint = 247432;
+        nBlockEnforceSerialRange = 281451;		/* Enforce serial range starting this block */
+        nBlockZerocoinV2 = 281451;			/* First mint at block 247432 */
         nEnforceNewSporkKey = 1527822208;		/* Fri Jun  1 05:03:28 CEST 2018: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1528427008;		/* Fri Jun  8 05:03:28 CEST 2018: after that reject old spork key */
 
@@ -261,9 +262,10 @@ public:
         nModifierUpdateBlock = 51197;
         nMaxMoneyOut = 25000000 * COIN;
         nZerocoinStartTime = 1541797200;		/* Fri Nov  9 21:00:00 UTC 2018 */
-        nBlockFirstGoodChecksum = 27000;		/* First block with valid Zerocoin checksums */
-        nBlockEnforceSerialRange = 250;			/* Enforce serial range starting this block */
-        nBlockZerocoinV2 = 250;				/* First mint at block 314 */
+        nBlockFirstGoodChecksum = 26751;		/* First block with valid Zerocoin checksums */
+        nBlockFirstMint = 312;
+        nBlockEnforceSerialRange = 2181;		/* Enforce serial range starting this block */
+        nBlockZerocoinV2 = 2181;			/* First mint at block 312 */
         nEnforceNewSporkKey = 1540760400;		/* Sun Oct 28 21:00:00 UTC 2018: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1541325600;		/* Sun Nov  4 21:00:00 UTC 2018: after that reject old spork key */
 

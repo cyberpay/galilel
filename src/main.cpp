@@ -1076,7 +1076,7 @@ bool CheckZerocoinSpend(const CTransaction& tx, bool fVerifySignature, CValidati
         }
 
         // Skip signature verification during initial block download and for broken checksum range
-        if (fVerifySignature && nHeight >= Params().Zerocoin_Block_FirstGoodChecksum()) {
+        if (fVerifySignature) {
             //see if we have record of the accumulator used in the spend tx
             CBigNum bnAccumulatorValue = 0;
             if (!zerocoinDB->ReadAccumulatorValue(newSpend.getAccumulatorChecksum(), bnAccumulatorValue)) {
@@ -2514,15 +2514,18 @@ bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError
 
 bool UpdateZGALISupply(const CBlock& block, CBlockIndex* pindex, bool fJustCheck)
 {
+
+    // Skip everything before first zerocoin mint occurs.
+    if (pindex->nHeight < Params().Zerocoin_Block_FirstMint())
+        return true;
+
     std::list<CZerocoinMint> listMints;
     BlockToZerocoinMintList(block, listMints);
     std::list<libzerocoin::CoinDenomination> listSpends = ZerocoinSpendListFromBlock(block);
 
     // Initialize zerocoin supply to the supply from previous block
-    if (pindex->nHeight >= Params().Zerocoin_Block_V2_Start()) {
-        for (auto& denom : zerocoinDenomList) {
-            pindex->mapZerocoinSupply.at(denom) = pindex->pprev->mapZerocoinSupply.at(denom);
-        }
+    for (auto& denom : zerocoinDenomList) {
+        pindex->mapZerocoinSupply.at(denom) = pindex->pprev->mapZerocoinSupply.at(denom);
     }
 
     // Track zerocoin money supply
