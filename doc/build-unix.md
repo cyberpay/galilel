@@ -2,10 +2,10 @@
 
 Some notes on how to build Galilel in Unix.
 
-### Note
+## Note
 
-Always use absolute paths to configure and compile galilel and the dependencies,
-for example, when specifying the path of the dependency:
+Always use absolute paths to configure and compile galilel and the
+dependencies, for example, when specifying the path of the dependency:
 
 ```
 ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
@@ -14,7 +14,7 @@ for example, when specifying the path of the dependency:
 Here BDB_PREFIX must absolute path - it is defined using $(pwd) which ensures
 the usage of the absolute path.
 
-### To Build
+## To Build
 
 ```bash
 ./autogen.sh
@@ -25,79 +25,101 @@ make install # optional
 
 This will build galilel-qt as well if the dependencies are met.
 
-### Dependencies
+## Dependencies
 
 These dependencies are required:
 
-Library     | Purpose          | Description
-------------|------------------|----------------------
-libssl      | SSL Support      | Secure communications
-libboost    | Boost            | C++ Library
-libevent    | Events           | Asynchronous event notification
+Library     | Purpose            | Description
+------------|--------------------|----------------------
+libssl      | SSL Support        | Secure communications
+libboost    | Boost              | C++ Library
+libevent    | Events             | Asynchronous event notification
+libgmp      | Bignum Arithmetic  | Precision arithmetic
 
 Optional dependencies:
 
-Library     | Purpose          | Description
-------------|------------------|----------------------
-miniupnpc   | UPnP Support     | Firewall-jumping support
-libdb4.8    | Berkeley DB      | Wallet storage (only needed when wallet enabled)
-qt          | GUI              | GUI toolkit (only needed when GUI enabled)
-protobuf    | Payments in GUI  | Data interchange format used for payment protocol (only needed when GUI enabled)
-libqrencode | QR codes in GUI  | Optional for generating QR codes (only needed when GUI enabled)
-univalue    | Utility          | JSON parsing and encoding (bundled version will be used unless --with-system-univalue passed to configure)
+Library     | Purpose            | Description
+------------|--------------------|----------------------
+miniupnpc   | UPnP Support       | Firewall-jumping support
+libdb4.8    | Berkeley DB        | Wallet storage (only needed when wallet enabled)
+qt          | GUI                | GUI toolkit (only needed when GUI enabled)
+protobuf    | Payments in GUI    | Data interchange format used for payment protocol (only needed when GUI enabled)
+libqrencode | QR codes in GUI    | Optional for generating QR codes (only needed when GUI enabled)
+univalue    | Utility            | JSON parsing and encoding (bundled version will be used unless --with-system-univalue passed to configure)
+libzmq3     | ZMQ notification   | Optional, allows generating ZMQ notifications (requires ZMQ version >= 4.0.0)
 
 For the versions used in the release, see [release-process.md](release-process.md)
 under *Fetch and build inputs*.
 
-### System requirements
+## System requirements
 
 C++ compilers are memory-hungry. It is recommended to have at least 1 GB of
 memory available when compiling Galilel Core. With 512MB of memory or less
 compilation will take much longer due to swap thrashing.
 
-### Dependency Build Instructions: Ubuntu & Debian
+## Linux Distribution Specific Instructions
 
-Build requirements:
+###  Ubuntu & Debian
 
-```
-sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libevent-dev
-```
+#### Dependency Build Instructions
 
-For Ubuntu 12.04 and later or Debian 7 and later libboost-all-dev has to be
-installed:
+Build Requirements:
 
 ```
-sudo apt-get install libboost-all-dev
+sudo apt-get install build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3
 ```
 
-db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
+Now, you can either build from self-compiled [depends](/depends/README.md) or
+install the required dependencies:
+
+```
+sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev
+```
+
+**Note:** For Ubuntu versions starting with Bionic (18.04), or Debian versions
+starting with Stretch, use `libssl1.0-dev` above instead of `libssl-dev`.
+Galilel Core does not support the use of OpenSSL 1.1, though compilation is
+still possible by passing `--with-incompatible-ssl` to configure (NOT
+RECOMMENDED!).
+
+BerkeleyDB is required for the wallet.
+
+**For Ubuntu only:** db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
 You can add the repository using the following command:
 
 ```
+sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:bitcoin/bitcoin
 sudo apt-get update
-```
-
-Ubuntu 12.04 and later have packages for libdb5.1-dev and libdb5.1++-dev, but
-using these will break binary wallet compatibility, and is not recommended.
-
-For other Debian & Ubuntu (with ppa):
-
-```
 sudo apt-get install libdb4.8-dev libdb4.8++-dev
 ```
 
-Optional:
+Ubuntu and Debian have their own libdb-dev and libdb++-dev packages, but these
+will install BerkeleyDB 5.1 or later. This will break binary wallet
+compatibility with the distributed executables, which are based on BerkeleyDB
+4.8. If you do not care about wallet compatibility, pass
+`--with-incompatible-bdb` to configure.
+
+To build Bitcoin Core without wallet, see [*Disable-wallet mode*](/doc/build-unix.md#disable-wallet-mode)
+
+Optional (see --with-miniupnpc and --enable-upnp-default):
 
 ```
-sudo apt-get install libminiupnpc-dev (see --with-miniupnpc and --enable-upnp-default)
+sudo apt-get install libminiupnpc-dev
 ```
 
-### Dependencies for the GUI: Ubuntu & Debian
+ZMQ dependencies (provides ZMQ API):
 
-If you want to build Galilel-Qt, make sure that the required packages for Qt
+```
+sudo apt-get install libzmq3-dev
+```
+
+GUI dependencies:
+
+If you want to build galilel-qt, make sure that the required packages for Qt
 development are installed. Qt 5 is necessary to build the GUI. If both Qt 4 and
-Qt 5 are installed, Qt 5 will be used. To build without GUI pass `--without-gui`.
+Qt 5 are installed, Qt 5 will be used. To build without GUI pass
+`--without-gui`.
 
 For Qt 5 you need the following:
 
@@ -114,12 +136,40 @@ sudo apt-get install libqrencode-dev
 Once these are installed, they will be found by configure and a galilel-qt
 executable will be built by default.
 
-### Notes
+### Fedora
+
+#### Dependency Build Instructions
+
+Build requirements:
+
+```
+sudo dnf install which gcc-c++ libtool make autoconf automake compat-openssl10-devel libevent-devel boost-devel libdb4-devel libdb4-cxx-devel gmp-devel python3
+```
+
+Optional:
+
+```
+sudo dnf install miniupnpc-devel zeromq-devel
+```
+
+To build with Qt 5 you need the following:
+
+```
+sudo dnf install qt5-qttools-devel qt5-qtbase-devel protobuf-devel
+```
+
+libqrencode (optional) can be installed with:
+
+```
+sudo dnf install qrencode-devel
+```
+
+## Notes
 
 The release is built with GCC and then "strip galileld" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
-### MiniUPnP
+## MiniUPnP
 
 [miniupnpc](http://miniupnp.free.fr/) may be used for UPnP port mapping. It can
 be downloaded from [here](http://miniupnp.tuxfamily.org/files/). UPnP support
@@ -142,7 +192,7 @@ sudo su
 make install
 ```
 
-### Berkeley DB
+## Berkeley DB
 
 It is recommended to use Berkeley DB 4.8. If you have to build it yourself:
 
@@ -151,7 +201,7 @@ GALILEL_ROOT=$(pwd)
 
 # Pick some path to install BDB to, here we create a directory within the galilel directory
 BDB_PREFIX="${GALILEL_ROOT}/db4"
-mkdir -p ${BDB_PREFIX}
+mkdir -p $BDB_PREFIX
 
 # Fetch the source and verify that it is not tampered with
 wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
@@ -162,18 +212,18 @@ tar -xzvf db-4.8.30.NC.tar.gz
 # Build the library and install to our prefix
 cd db-4.8.30.NC/build_unix/
 #  Note: Do a static build so that it can be embedded into the exectuable, instead of having to find a .so at runtime
-../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BDB_PREFIX}
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
 make install
 
 # Configure Galilel Core to use our own-built instance of BDB
-cd ${GALILEL_ROOT}
+cd $GALILEL_ROOT
 ./configure (other args...) LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/"
 ```
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see the section
 *Disable-Wallet mode* below).
 
-### Boost
+## Boost
 
 If you need to build Boost yourself:
 
@@ -183,7 +233,7 @@ sudo su
 ./bjam install
 ```
 
-### Security
+## Security
 
 To help make your Galilel installation more secure by making certain attacks
 impossible to exploit even if a vulnerability is found, binaries are hardened
@@ -241,3 +291,25 @@ Hardening enables the following features:
 
   The STK RW- means that the stack is readable and writeable but not
   executable.
+
+## Disable-wallet mode
+
+**Note:** This functionality is not yet completely implemented, and compilation
+using the below option will currently fail.
+
+When the intention is to run only a P2P node without a wallet, Galilel Core may
+be compiled in disable-wallet mode with:
+
+```
+./configure --disable-wallet
+```
+
+In this case there is no dependency on Berkeley DB 4.8.
+
+## Additional Configure Flags
+
+A list of additional configure flags can be displayed with:
+
+```
+./configure --help
+```
