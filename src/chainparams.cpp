@@ -345,13 +345,22 @@ public:
         nTargetTimespan = 24 * 60 * 60; // GALI: 1 day
         nTargetSpacing = 1 * 60;        // GALI: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1527217410;
-        genesis.nBits = 0x207fffff;
-        genesis.nNonce = 7;
+        nLastPOWBlock = 200;
+        nMaturity = 99;
+        nMasternodeCountDrift = 4;
+        nModifierUpdateBlock = 0;
+        nMaxMoneyOut = 25000000 * COIN;
+        nBlockZerocoinV2 = 300;
+        nZerocoinStartTime = 1540587600;
+        nBlockEnforceSerialRange = 300; //Enforce serial range starting this block
+
+        // Modify the regtest genesis block so the timestamp is valid for a later start.
+        genesis.nTime = 1540587600;
+        genesis.nNonce = 1745260;
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 57123;
-        assert(hashGenesisBlock == uint256("0x7efc7852063bf1df9faa80bcc5a2572a3be0e975d4c35fc7ba82b16b1693052d"));
+        assert(hashGenesisBlock == uint256("0x000008e4c24baa9a3503e6dc2f3b459843441a0d56677b1e4bd0b9a381ca987f"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
@@ -361,6 +370,7 @@ public:
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
         fMineBlocksOnDemand = true;
+        fSkipProofOfWorkCheck = true;
         fTestnetToBeDeprecatedFieldRPC = false;
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
