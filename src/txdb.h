@@ -12,7 +12,7 @@
 
 #include "leveldbwrapper.h"
 #include "main.h"
-#include "primitives/zerocoin.h"
+#include "zgali/zerocoin.h"
 
 #include <map>
 #include <string>

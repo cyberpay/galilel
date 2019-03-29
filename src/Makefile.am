@@ -79,10 +79,6 @@ endif
 # galilel core #
 BITCOIN_CORE_H = \
   activemasternode.h \
-  accumulators.h \
-  accumulatorcheckpoints.h \
-  accumulatorcheckpoints.json.h \
-  accumulatormap.h \
   addrman.h \
   alert.h \
   allocators.h \
@@ -106,9 +102,7 @@ BITCOIN_CORE_H = \
   compat/sanity.h \
   compressor.h \
   primitives/block.h \
-  primitives/deterministicmint.h \
   primitives/transaction.h \
-  primitives/zerocoin.h \
   core_io.h \
   crypter.h \
   denomination_functions.h \
@@ -134,7 +128,6 @@ BITCOIN_CORE_H = \
   masternodeconfig.h \
   merkleblock.h \
   miner.h \
-  mintpool.h \
   mruset.h \
   netbase.h \
   net.h \
@@ -181,8 +174,16 @@ BITCOIN_CORE_H = \
   wallet_ismine.h \
   walletdb.h \
   zgalichain.h \
-  zgalitracker.h \
-  zgaliwallet.h \
+  zgali/accumulators.h \
+  zgali/accumulatorcheckpoints.h \
+  zgali/accumulatorcheckpoints.json.h \
+  zgali/accumulatormap.h \
+  zgali/deterministicmint.h \
+  zgali/mintpool.h \
+  zgali/witness.h \
+  zgali/zerocoin.h \
+  zgali/zgalitracker.h \
+  zgali/zgaliwallet.h \
   genwit.h \
   concurrentqueue.h \
   lightzgalithread.h \
@@ -264,17 +265,19 @@ libbitcoin_wallet_a_SOURCES = \
   masternode-sync.cpp \
   masternodeconfig.cpp \
   masternodeman.cpp \
-  mintpool.cpp \
   rpcdump.cpp \
-  primitives/deterministicmint.cpp \
-  primitives/zerocoin.cpp \
+  zgali/deterministicmint.cpp \
+  zgali/zerocoin.cpp \
   rpcwallet.cpp \
   kernel.cpp \
   wallet.cpp \
   wallet_ismine.cpp \
   walletdb.cpp \
-  zgaliwallet.cpp \
-  zgalitracker.cpp \
+  zgali/accumulators.cpp \
+  zgali/mintpool.cpp \
+  zgali/witness.cpp \
+  zgali/zgaliwallet.cpp \
+  zgali/zgalitracker.cpp \
   stakeinput.cpp \
   genwit.cpp \
   lightzgalithread.cpp \
@@ -346,9 +349,9 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
-  accumulators.cpp \
-  accumulatorcheckpoints.cpp \
-  accumulatormap.cpp \
+  zgali/accumulators.cpp \
+  zgali/accumulatorcheckpoints.cpp \
+  zgali/accumulatormap.cpp \
   allocators.cpp \
   amount.cpp \
   base58.cpp \
@@ -357,9 +360,9 @@ libbitcoin_common_a_SOURCES = \
   coins.cpp \
   compressor.cpp \
   primitives/block.cpp \
-  primitives/deterministicmint.cpp \
+  zgali/deterministicmint.cpp \
   primitives/transaction.cpp \
-  primitives/zerocoin.cpp \
+  zgali/zerocoin.cpp \
   core_read.cpp \
   core_write.cpp \
   hash.cpp \

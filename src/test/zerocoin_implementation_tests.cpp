@@ -9,15 +9,15 @@
 #include "chainparams.h"
 #include "main.h"
 #include "txdb.h"
-#include "primitives/deterministicmint.h"
+#include "zgali/deterministicmint.h"
 #include "key.h"
-#include "accumulatorcheckpoints.h"
+#include "zgali/accumulatorcheckpoints.h"
 #include "libzerocoin/bignum.h"
 #include <boost/test/unit_test.hpp>
 #include <iostream>
-#include <accumulators.h>
+#include <zgali/accumulators.h>
 #include "wallet.h"
-#include "zgaliwallet.h"
+#include "zgali/zgaliwallet.h"
 #include "zgalichain.h"
 
 using namespace libzerocoin;
