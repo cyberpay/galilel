@@ -142,8 +142,8 @@ public:
         nBlockFirstMint = 247432;
         nBlockEnforceSerialRange = 281451;		/* Enforce serial range starting this block */
         nBlockZerocoinV2 = 281451;			/* First mint at block 247432 */
-        nEnforceNewSporkKey = 1527822208;		/* Fri Jun  1 05:03:28 CEST 2018: sporks signed after must use the new spork key */
-        nRejectOldSporkKey = 1528427008;		/* Fri Jun  8 05:03:28 CEST 2018: after that reject old spork key */
+        nEnforceNewSporkKey = 1553907600;		/* Sat Mar 30 01:00:00 UTC 2019: sporks signed after must use the new spork key */
+        nRejectOldSporkKey = 1554080400;		/* Mon Apr  1 01:00:00 UTC 2019: after that reject old spork key */
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -203,7 +203,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0478c3e932fbe183b2f665de937866cb1cfc5ed4b0bf733b72286f265ffc03ff52dfd669fbb3f77d630e5393da65c721a9a891d2c4c6aa515dfd25ffe545582357";
+        strSporkKey = "048d5201291e3655fbd86eeeadc1d5da27b2e69d072e92084b08a83412334894ca2aefb3ac48cfec375169c2b9da19b5db34eec7dd60bc6e22bfa0901d1941ed12";
         strSporkKeyOld = "0478c3e932fbe183b2f665de937866cb1cfc5ed4b0bf733b72286f265ffc03ff52dfd669fbb3f77d630e5393da65c721a9a891d2c4c6aa515dfd25ffe545582357";
         strObfuscationPoolDummyAddress = "UZtNU63X1ct8bJULwCPZrh4oF8AE62CVJ1";
         nStartMasternodePayments = 1525192183; // Tue May  1 18:29:43 CEST 2018
@@ -266,8 +266,8 @@ public:
         nBlockFirstMint = 312;
         nBlockEnforceSerialRange = 2181;		/* Enforce serial range starting this block */
         nBlockZerocoinV2 = 2181;			/* First mint at block 312 */
-        nEnforceNewSporkKey = 1540760400;		/* Sun Oct 28 21:00:00 UTC 2018: sporks signed after must use the new spork key */
-        nRejectOldSporkKey = 1541325600;		/* Sun Nov  4 21:00:00 UTC 2018: after that reject old spork key */
+        nEnforceNewSporkKey = 1553907600;		/* Sat Mar 30 01:00:00 UTC 2019: sporks signed after must use the new spork key */
+        nRejectOldSporkKey = 1554080400;		/* Mon Apr  1 01:00:00 UTC 2019: after that reject old spork key */
 
         /* Testnet genesis block. */
         genesis.nTime = 1540587600;			/* Testnet started: Fri Oct 26 21:00:00 UTC 2018 */
@@ -308,7 +308,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = true;
 
         nPoolMaxTransactions = 2;
-        strSporkKey = "04363509d5c65f5a9ca7ceedad4887007ae85469d249a6f566b788504ee5e105bcf1bbc515f49a7aac3bceb8864bb2ba84bebd92c66ff9022309e2bfbd5f70d11f";
+        strSporkKey = "042d29f026121ae1d1c14a7005b55196c9a5e388c8895ba2373c049cefb65c333f4626b19bcb4af9e10b82e47e9e6cea4847d410a2599f6271813c263d430a2d9d";
         strSporkKeyOld = "04363509d5c65f5a9ca7ceedad4887007ae85469d249a6f566b788504ee5e105bcf1bbc515f49a7aac3bceb8864bb2ba84bebd92c66ff9022309e2bfbd5f70d11f";
         strObfuscationPoolDummyAddress = "acW3shX2oxMLykakdi9zvjvaX6NBCyVLTw";
         nStartMasternodePayments = 1540587600; // Fri Oct 26 21:00:00 UTC 2018
