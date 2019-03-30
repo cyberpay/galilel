@@ -15,6 +15,7 @@ QT_TS = \
   qt/locale/galilel_da.ts \
   qt/locale/galilel_de.ts \
   qt/locale/galilel_en.ts \
+  qt/locale/galilel_en_GB.ts \
   qt/locale/galilel_en_US.ts \
   qt/locale/galilel_eo.ts \
   qt/locale/galilel_es.ts \
