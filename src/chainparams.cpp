@@ -225,6 +225,8 @@ public:
         nZerocoinRequiredStakeDepth = 240; //The required confirmations for a zgali to be stakable
 
         nBudget_Fee_Confirmations = 6; // number of confirmations for the finalization fee
+
+        nBudgetSuperBlocks = 43200; // amount of blocks in a months period of time using 1 minutes per block
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -315,6 +317,8 @@ public:
         nRequiredMasternodeCollateral = 15000 * COIN; // Masternode collateral amount
         nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
                                        // here because we only have a 8 block finalization window on testnet
+
+        nBudgetSuperBlocks = 120; // amount of blocks in a 2 hours period of time using 1 minutes per block
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {

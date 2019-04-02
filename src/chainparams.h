@@ -123,7 +123,10 @@ public:
     int Zerocoin_Block_FirstMint() const { return nBlockFirstMint; }
     int Zerocoin_Block_EnforceSerialRange() const { return nBlockEnforceSerialRange; }
     int Zerocoin_StartTime() const { return nZerocoinStartTime; }
-    int Zerocoin_Block_V2_Start() const { return nBlockZerocoinV2; };
+    int Zerocoin_Block_V2_Start() const { return nBlockZerocoinV2; }
+
+    /** Development Budget **/
+    int Budget_SuperBlocks() const { return nBudgetSuperBlocks; };
 
 protected:
     CChainParams() {}
@@ -184,6 +187,8 @@ protected:
     int nBlockFirstMint;
     int nBlockEnforceSerialRange;
     int nBlockZerocoinV2;
+
+    int nBudgetSuperBlocks;
 };
 
 /**

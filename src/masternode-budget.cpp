@@ -28,11 +28,9 @@ int nSubmittedFinalBudget;
 
 int GetBudgetPaymentCycleBlocks()
 {
-    // Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
-    if (Params().NetworkID() == CBaseChainParams::MAIN) return 43200;
-    //for testing purposes
 
-    return 144; //ten times per day
+    // amount of blocks.
+    return Params().Budget_SuperBlocks();
 }
 
 bool IsBudgetCollateralValid(uint256 nTxCollateralHash, uint256 nExpectedHash, std::string& strError, int64_t& nTime, int& nConf, bool fBudgetFinalization)
@@ -945,16 +943,8 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
         nSubsidy = 220000 * COIN;
     }
 
-    /* enable budget system after block 250000. */
-    if (nHeight > 250000) {
-
-        /* Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30) */
-        return ((nSubsidy / 100) * 10) * 1440 * 30;
-    } else {
-
-        /* No dev budget. */
-        return nSubsidy;
-    }
+    /* development budget. */
+    return ((nSubsidy / 100) * 10) * GetBudgetPaymentCycleBlocks();
 }
 
 void CBudgetManager::NewBlock()
