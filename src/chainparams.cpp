@@ -224,7 +224,7 @@ public:
         nZerocoinHeaderVersion = 4; // block headers must be this version once zerocoin is active
         nZerocoinRequiredStakeDepth = 240; //The required confirmations for a zgali to be stakable
 
-        nBudget_Fee_Confirmations = 6; // number of confirmations for the finalization fee
+        nBudgetFeeConfirmations = 6; // number of confirmations for the finalization fee
 
         nBudgetSuperBlocks = 43200; // amount of blocks in a months period of time using 1 minutes per block
     }
@@ -315,7 +315,7 @@ public:
         strObfuscationPoolDummyAddress = "acW3shX2oxMLykakdi9zvjvaX6NBCyVLTw";
         nStartMasternodePayments = 1540587600; // Fri Oct 26 21:00:00 UTC 2018
         nRequiredMasternodeCollateral = 15000 * COIN; // Masternode collateral amount
-        nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
+        nBudgetFeeConfirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
                                        // here because we only have a 8 block finalization window on testnet
 
         nBudgetSuperBlocks = 120; // amount of blocks in a 2 hours period of time using 1 minutes per block
