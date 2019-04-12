@@ -2390,15 +2390,17 @@ void RecalculateZGALIMinted()
         else
             break;
     }
+    uiInterface.ShowProgress("", 100);
 }
 
 void RecalculateZGALISpent()
 {
     CBlockIndex* pindex = chainActive[Params().Zerocoin_Block_V2_Start()];
+    uiInterface.ShowProgress(_("Recalculating spent ZGALI..."), 0);
     while (true) {
         if (pindex->nHeight % 1000 == 0) {
             LogPrintf("%s : block %d...\n", __func__, pindex->nHeight);
-            int percent = (int)( (double)(pindex->nHeight - Params().Zerocoin_Block_V2_Start()) * 100 / (chainActive.Height() - Params().Zerocoin_Block_V2_Start()) );
+            int percent = std::max(1, std::min(99, (int)((double)(pindex->nHeight - Params().Zerocoin_Block_V2_Start()) * 100 / (chainActive.Height() - Params().Zerocoin_Block_V2_Start()))));
             uiInterface.ShowProgress(_("Recalculating spent zGALI..."), percent);
         }
 
@@ -2440,10 +2442,11 @@ bool RecalculateGALISupply(int nHeightStart)
     CBlockIndex* pindex = chainActive[nHeightStart];
     CAmount nSupplyPrev = pindex->pprev->nMoneySupply;
 
+    uiInterface.ShowProgress(_("Recalculating GALI supply..."), 0);
     while (true) {
         if (pindex->nHeight % 1000 == 0) {
             LogPrintf("%s : block %d...\n", __func__, pindex->nHeight);
-            int percent = (int)( (double)((pindex->nHeight - nHeightStart) * 100) / (chainActive.Height() - nHeightStart) );
+            int percent = std::max(1, std::min(99, (int)((double)((pindex->nHeight - nHeightStart) * 100) / (chainActive.Height() - nHeightStart))));
             uiInterface.ShowProgress(_("Recalculating GALI supply..."), percent);
         }
 
