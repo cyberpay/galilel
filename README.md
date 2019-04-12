@@ -1,13 +1,15 @@
 # Galilel Core
 
 [![Build Status](https://travis-ci.com/Galilel-Project/galilel.svg?branch=master)](https://travis-ci.com/Galilel-Project/galilel)
-[![GitHub version](https://badge.fury.io/gh/Galilel-Project%2Fgalilel.svg)](https://badge.fury.io/gh/Galilel-Project%2Fgalilel.svg)
+[![GitHub version](https://badge.fury.io/gh/Galilel-Project%2Fgalilel.svg)](https://github.com/Galilel-Project/galilel/releases)
 [![GitHub issues](https://img.shields.io/github/issues/Galilel-Project/galilel.svg)](https://github.com/Galilel-Project/galilel/issues)
 [![GitHub forks](https://img.shields.io/github/forks/Galilel-Project/galilel.svg)](https://github.com/Galilel-Project/galilel/network/members)
 [![GitHub stars](https://img.shields.io/github/stars/Galilel-Project/galilel.svg)](https://github.com/Galilel-Project/galilel/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Galilel-Project/galilel.svg)](https://github.com/Galilel-Project/galilel/blob/master/COPYING)
 [![GitHub downloads](https://img.shields.io/github/downloads/Galilel-Project/galilel/total.svg)](https://github.com/Galilel-Project/galilel/releases)
 [![Discord users](https://img.shields.io/discord/484443103659556881.svg)](https://discord.galilel.cloud)
+
+![](doc/img/desktop_wallet.jpg)
 
 The first Proof-of-Work, Proof-of-Stake, Proof-of-Burn and Proof-of-Transaction
 general purpose crypto currency with Hybrid Consensus Algorithm, Dynamic
