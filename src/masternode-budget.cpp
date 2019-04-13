@@ -942,7 +942,11 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
     } else if (nHeight > 1) {
         nSubsidy = 220000 * COIN;
     } else if (nHeight == 1) {
-        nSubsidy = 50 * COIN;
+        if (Params().NetworkID() == CBaseChainParams::TESTNET) {
+            nSubsidy = 1 * COIN;
+        } else {
+            nSubsidy = 50 * COIN;
+        }
     }
 
     /* development budget. */
