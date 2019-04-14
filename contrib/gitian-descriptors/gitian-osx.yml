@@ -1,5 +1,5 @@
 ---
-name: "galilel-osx-3.2"
+name: "galilel-osx-3.3"
 enable_cache: true
 suites:
 - "bionic"

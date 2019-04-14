@@ -1,5 +1,5 @@
 ---
-name: "galilel-win-3.2"
+name: "galilel-win-3.3"
 enable_cache: true
 suites:
 - "bionic"
