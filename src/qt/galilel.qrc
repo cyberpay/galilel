@@ -65,6 +65,9 @@
         <file alias="novote">res/icons/novote.png</file>
         <file alias="abstainvote">res/icons/abstainvote.png</file>
         <file alias="onion">res/icons/onion.png</file>
+        <file alias="verifymessage">res/icons/verifymessage.png</file>
+        <file alias="info">res/icons/info.png</file>
+        <file alias="openfile">res/icons/openfile.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>

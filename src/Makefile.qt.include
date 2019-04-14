@@ -277,7 +277,10 @@ RES_ICONS = \
   qt/res/icons/unit_tugalilel.png \
   qt/res/icons/yesvote.png \
   qt/res/icons/novote.png \
-  qt/res/icons/abstainvote.png
+  qt/res/icons/abstainvote.png \
+  qt/res/icons/verifymessage.png \
+  qt/res/icons/info.png \
+  qt/res/icons/openfile.png
 
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \

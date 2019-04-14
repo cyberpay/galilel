@@ -360,7 +360,7 @@
            </property>
            <property name="icon">
             <iconset resource="../galilel.qrc">
-             <normaloff>:/icons/transaction_0</normaloff>:/icons/transaction_0</iconset>
+             <normaloff>:/icons/verifymessage</normaloff>:/icons/verifymessage</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>

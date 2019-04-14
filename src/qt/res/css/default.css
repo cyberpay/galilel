@@ -238,7 +238,7 @@ QPushButton { /* Global Button Style */
 }
 
 QPushButton:hover {
-  background-color: qlineargradient(y1:0, y2: 1, stop: 0 #ffffff, stop: 0.1 #ffffff, stop: 0.101 #8d6e63, stop: 0.9 #8d6e63, stop: 0.901 #ffffff, stop: 1 #ffffff);
+  background-color: qlineargradient(y1:0, y2: 1, stop: 0 #986a5a, stop: 0.1 #986a5a, stop: 0.101 #986a5a, stop: 0.9 #986a5a, stop: 0.901 #986a5a, stop: 1 #986a5a);
 }
 
 QPushButton:focus {
@@ -249,7 +249,7 @@ QPushButton:focus {
 QPushButton:pressed {
   background-color: #795548;
   border: 1px solid #000000;
-  background-color: qlineargradient(y1:0, y2: 1, stop: 0 #00ff00, stop: 0.1 #00ff00, stop: 0.101 #8d6e63, stop: 0.9 #8d6e63, stop: 0.901 #00ff00, stop: 1 #00ff00);
+  background-color: qlineargradient(y1:0, y2: 1, stop: 0 #bca389, stop: 0.1 #bca389, stop: 0.101 #bca389, stop: 0.9 #bca389, stop: 0.901 #bca389, stop: 1 #bca389);
 }
 
 /* Special handling for statusbar-icons (which are partly QPushButtons) */
