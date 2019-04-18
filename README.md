@@ -63,6 +63,7 @@ Zerocoin Proof-of-Stake (zPoS) rewards depending on the block reward!
 * Max Coin Supply (January 2050): 97,875,999 GALI
 * Dynamic Coin Supply: All transaction fees & zGALI minting fees are burnt
 * Community Donation Address: https://explorer.galilel.cloud/address/UUr5nDmykhun1HWM7mJAqLVeLzoGtx19dX
+* Multisig Budget Address (3-of-6): https://explorer.galilel.cloud/address/7U3FMDhKv4j5bzauurPoX1TtqE7hPowSJi
 * Dev Budget (from block 250,001): 10% in monthly superblock
 
 # Zerocoin Specifications
