@@ -142,6 +142,8 @@ void ZGaliControlDialog::updateList()
             string strReason = "";
             if(nConfirmations < Params().Zerocoin_MintRequiredConfirmations())
                 strReason = strprintf("Needs %d more confirmations", Params().Zerocoin_MintRequiredConfirmations() - nConfirmations);
+            else if (model->getEncryptionStatus() == WalletModel::EncryptionStatus::Locked)
+                strReason = "Your wallet is locked. Impossible to precompute or spend zGALI.";
             else if (!mint.isSeedCorrect)
                 strReason = "The zGALI seed used to mint this zGALI is not the same as currently hold in the wallet";
             else
