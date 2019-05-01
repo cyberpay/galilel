@@ -367,7 +367,6 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
         /* GALI features */
-        {"galilel", "masternode", &masternode, true, true, false},
         {"galilel", "listmasternodes", &listmasternodes, true, true, false},
         {"galilel", "getmasternodecount", &getmasternodecount, true, true, false},
         {"galilel", "masternodeconnect", &masternodeconnect, true, true, false},
@@ -383,7 +382,6 @@ static const CRPCCommand vRPCCommands[] =
         {"galilel", "getmasternodestatus", &getmasternodestatus, true, true, false},
         {"galilel", "getmasternodewinners", &getmasternodewinners, true, true, false},
         {"galilel", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"galilel", "mnbudget", &mnbudget, true, true, false},
         {"galilel", "preparebudget", &preparebudget, true, true, false},
         {"galilel", "submitbudget", &submitbudget, true, true, false},
         {"galilel", "mnbudgetvote", &mnbudgetvote, true, true, false},
