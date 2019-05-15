@@ -18,8 +18,9 @@
 #include "utilmoneystr.h"
 #include "zgali/accumulatormap.h"
 #include "zgali/accumulators.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "zgalichain.h"
+
 #include <stdint.h>
 #include <fstream>
 #include <iostream>

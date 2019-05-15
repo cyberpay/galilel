@@ -9,7 +9,7 @@
 #include "zgali/deterministicmint.h"
 #include "main.h"
 #include "stakeinput.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 
 CZGaliStake::CZGaliStake(const libzerocoin::CoinSpend& spend)
 {

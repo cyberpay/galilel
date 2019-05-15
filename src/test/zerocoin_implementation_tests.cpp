@@ -16,7 +16,7 @@
 #include <boost/test/unit_test.hpp>
 #include <iostream>
 #include <zgali/accumulators.h>
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "zgali/zgaliwallet.h"
 #include "zgalichain.h"
 

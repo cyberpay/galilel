@@ -10,7 +10,7 @@
 #include "sync.h"
 #include "main.h"
 #include "txdb.h"
-#include "walletdb.h"
+#include "wallet/walletdb.h"
 #include "zgali/accumulators.h"
 #include "zgali/zgaliwallet.h"
 #include "witness.h"

@@ -108,7 +108,7 @@ BITCOIN_CORE_H = \
   denomination_functions.h \
   obfuscation.h \
   obfuscation-relay.h \
-  db.h \
+  wallet/db.h \
   hash.h \
   httprpc.h \
   httpserver.h \
@@ -170,9 +170,9 @@ BITCOIN_CORE_H = \
   utiltime.h \
   validationinterface.h \
   version.h \
-  wallet.h \
-  wallet_ismine.h \
-  walletdb.h \
+  wallet/wallet.h \
+  wallet/wallet_ismine.h \
+  wallet/walletdb.h \
   zgalichain.h \
   zgali/accumulators.h \
   zgali/accumulatorcheckpoints.h \
@@ -256,7 +256,7 @@ libbitcoin_wallet_a_SOURCES = \
   denomination_functions.cpp \
   obfuscation.cpp \
   obfuscation-relay.cpp \
-  db.cpp \
+  wallet/db.cpp \
   crypter.cpp \
   swifttx.cpp \
   masternode.cpp \
@@ -265,14 +265,14 @@ libbitcoin_wallet_a_SOURCES = \
   masternode-sync.cpp \
   masternodeconfig.cpp \
   masternodeman.cpp \
-  rpcdump.cpp \
+  wallet/rpcdump.cpp \
+  wallet/rpcwallet.cpp \
+  kernel.cpp \
+  wallet/wallet.cpp \
+  wallet/wallet_ismine.cpp \
+  wallet/walletdb.cpp \
   zgali/deterministicmint.cpp \
   zgali/zerocoin.cpp \
-  rpcwallet.cpp \
-  kernel.cpp \
-  wallet.cpp \
-  wallet_ismine.cpp \
-  walletdb.cpp \
   zgali/accumulators.cpp \
   zgali/mintpool.cpp \
   zgali/witness.cpp \
