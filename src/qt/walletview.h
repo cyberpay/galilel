@@ -14,7 +14,7 @@
 #include "masternodelist.h"
 
 #include <QStackedWidget>
-#include <ui_interface.h>
+#include <guiinterface.h>
 
 class BitcoinGUI;
 class ClientModel;
