@@ -146,5 +146,5 @@ void CBlock::print() const
 
 bool CBlock::IsZerocoinStake() const
 {
-    return IsProofOfStake() && vtx[1].IsZerocoinSpend();
+    return IsProofOfStake() && vtx[1].HasZerocoinSpendInputs();
 }
