@@ -1,6 +1,6 @@
 [Desktop Entry]
-Encoding=UTF-8
-Name=Galilel
+Version=3.3.0
+Name=Galilel Core
 Comment=Galilel P2P Cryptocurrency
 Comment[fr]=Galilel, monnaie virtuelle cryptographique pair à pair
 Comment[tr]=Galilel, eşten eşe kriptografik sanal para birimi
@@ -10,3 +10,4 @@ Type=Application
 Icon=galilel128
 MimeType=x-scheme-handler/galilel;
 Categories=Office;Finance;
+StartupWMClass=galilel-qt
