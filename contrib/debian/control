@@ -29,7 +29,7 @@ Build-Depends: debhelper,
  libzmq3-dev,
  dh-systemd
 Standards-Version: 3.9.2
-Homepage: https://galilel.cloud
+Homepage: https://galilel.org
 Vcs-Git: git://github.com/Galilel-Project/galilel.git
 Vcs-Browser: https://github.com/Galilel-Project/galilel
 

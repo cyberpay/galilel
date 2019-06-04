@@ -159,7 +159,7 @@ I usually confirm that remote is on the correct block by issuing:
 galileld getinfo
 ```
 
-And compare with the official explorer at https://explorer.galilel.cloud
+And compare with the official explorer at https://explorer.galilel.org
 
 ### Local
 

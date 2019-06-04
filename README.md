@@ -7,7 +7,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Galilel-Project/galilel.svg)](https://github.com/Galilel-Project/galilel/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Galilel-Project/galilel.svg)](https://github.com/Galilel-Project/galilel/blob/master/COPYING)
 [![GitHub downloads](https://img.shields.io/github/downloads/Galilel-Project/galilel/total.svg)](https://github.com/Galilel-Project/galilel/releases)
-[![Discord users](https://img.shields.io/discord/484443103659556881.svg)](https://discord.galilel.cloud)
+[![Discord users](https://img.shields.io/discord/484443103659556881.svg)](https://discord.galilel.org)
 
 ![](doc/img/desktop_wallet.jpg)
 
@@ -62,8 +62,8 @@ Zerocoin Proof-of-Stake (zPoS) rewards depending on the block reward!
 * Max Coin Supply (January 2040): 71,595,999 GALI
 * Max Coin Supply (January 2050): 97,875,999 GALI
 * Dynamic Coin Supply: All transaction fees & zGALI minting fees are burnt
-* Community Donation Address: https://explorer.galilel.cloud/address/UUr5nDmykhun1HWM7mJAqLVeLzoGtx19dX
-* Multisig Budget Address (3-of-6): https://explorer.galilel.cloud/address/7U3FMDhKv4j5bzauurPoX1TtqE7hPowSJi
+* Community Donation Address: https://explorer.galilel.org/address/UUr5nDmykhun1HWM7mJAqLVeLzoGtx19dX
+* Multisig Budget Address (3-of-6): https://explorer.galilel.org/address/7U3FMDhKv4j5bzauurPoX1TtqE7hPowSJi
 * Dev Budget (from block 250,001): 10% in monthly superblock
 
 # Zerocoin Specifications
@@ -116,19 +116,19 @@ Stage X | 430,001-ongoing |    5 GALI | 70% | 30% |    ongoing | ongoing |    on
 
 # Official Links
 
-Website: https://galilel.cloud/
+Website: https://galilel.org/
 
 GitHub (Wallet): https://github.com/Galilel-Project/galilel/
 
 GitHub (Project): https://github.com/Galilel-Project/
 
-Block Explorer (Mainnet) : https://explorer.galilel.cloud/
+Block Explorer (Mainnet) : https://explorer.galilel.org/
 
 Block Explorer 2 (Mainnet Aiodex): https://explorer.aiodex.com/GALI
 
-Block Explorer (Testnet): https://explorer.testnet.galilel.cloud/
+Block Explorer (Testnet): https://explorer.testnet.galilel.org/
 
-BitcoinTalk Announcement: https://bittcointalk.galilel.cloud
+BitcoinTalk Announcement: https://bittcointalk.galilel.org
 
 Twitter: https://twitter.com/GalilelEN
 
@@ -138,7 +138,7 @@ YouTube: https://youtube.com/channel/UC26rKBciicXp33dK8NkALmg
 
 Instagram: https://instagram.com/galilel_en/
 
-Discord: https://discord.galilel.cloud
+Discord: https://discord.galilel.org
 
 Telegram: https://t.me/GalilelEN
 

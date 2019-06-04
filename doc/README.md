@@ -2,7 +2,7 @@
 
 ## Setup
 
-[Galilel Core](https://galilel.cloud/wallet) is the original Galilel client and it builds the backbone of the network. However, it downloads and stores the entire history of Galilel transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[Galilel Core](https://galilel.org/wallet) is the original Galilel client and it builds the backbone of the network. However, it downloads and stores the entire history of Galilel transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 ## Running
 
@@ -52,7 +52,7 @@ or drag Galilel-Qt to your applications folder and then run Galilel-Qt.
 ### Help
 
 * Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=4238243)
-* Join our Discord server [Discord Server](https://discord.galilel.cloud)
+* Join our Discord server [Discord Server](https://discord.galilel.org)
 
 # Building
 

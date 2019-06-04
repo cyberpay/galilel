@@ -20,7 +20,7 @@ Summary:	Peer to Peer Cryptographic Currency
 
 Group:		Applications/System
 License:	MIT
-URL:		https://galilel.cloud/
+URL:		https://galilel.org/
 Source0:	https://github.com/Galilel-Project/galilel/releases/download/v%{version}/galilel-v%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 

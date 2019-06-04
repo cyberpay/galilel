@@ -72,8 +72,8 @@ UniValue preparebudget(const UniValue& params, bool fHelp)
             "\"xxxx\"       (string) proposal fee hash (if successful) or error message (if failed)\n"
 
             "\nExamples:\n" +
-            HelpExampleCli("preparebudget", "\"test-proposal\" \"https://galilel.cloud/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500") +
-            HelpExampleRpc("preparebudget", "\"test-proposal\" \"https://galilel.cloud/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500"));
+            HelpExampleCli("preparebudget", "\"test-proposal\" \"https://galilel.org/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500") +
+            HelpExampleRpc("preparebudget", "\"test-proposal\" \"https://galilel.org/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500"));
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
@@ -168,8 +168,8 @@ UniValue submitbudget(const UniValue& params, bool fHelp)
             "\"xxxx\"       (string) proposal hash (if successful) or error message (if failed)\n"
 
             "\nExamples:\n" +
-            HelpExampleCli("submitbudget", "\"test-proposal\" \"https://galilel.cloud/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500") +
-            HelpExampleRpc("submitbudget", "\"test-proposal\" \"https://galilel.cloud/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500"));
+            HelpExampleCli("submitbudget", "\"test-proposal\" \"https://galilel.org/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500") +
+            HelpExampleRpc("submitbudget", "\"test-proposal\" \"https://galilel.org/t/test-proposal\" 2 820800 \"UYB43zFEsQMmHEfZsHSZQ3ossbJ12f4xrp\" 500"));
 
     // Check these inputs the same way we check the vote commands:
     // **********************************************************
