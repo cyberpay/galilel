@@ -174,14 +174,14 @@ public:
         assert(hashGenesisBlock == uint256("0x00000a15f1dd0b452c85b89d7e8a2968205e19550b1c2f12909367a04afc2855"));
         assert(genesis.hashMerkleRoot == uint256("0x1dd81cdda448e9346a94f82e0d6c9fa7a876b59124da4dc49b66531d3ef11822"));
 
-        vSeeds.push_back(CDNSSeedData("seed1.galilel.cloud", "seed1.galilel.cloud")); // 1st DNS Seeder from mbroemme
-        vSeeds.push_back(CDNSSeedData("seed2.galilel.cloud", "seed2.galilel.cloud")); // 2nd DNS Seeder from mbroemme
-        vSeeds.push_back(CDNSSeedData("seed3.galilel.cloud", "seed3.galilel.cloud")); // 3rd DNS Seeder from mbroemme
-        vSeeds.push_back(CDNSSeedData("seed4.galilel.cloud", "seed4.galilel.cloud")); // 4th DNS Seeder from mbroemme
-        vSeeds.push_back(CDNSSeedData("seed5.galilel.cloud", "seed5.galilel.cloud")); // 5th DNS Seeder from gridscale.io
-        vSeeds.push_back(CDNSSeedData("seed6.galilel.cloud", "seed6.galilel.cloud")); // 6th DNS Seeder from gridscale.io
-        vSeeds.push_back(CDNSSeedData("seed7.galilel.cloud", "seed7.galilel.cloud")); // 7th DNS Seeder from gridscale.io
-        vSeeds.push_back(CDNSSeedData("seed8.galilel.cloud", "seed8.galilel.cloud")); // 8th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed1.galilel.org", "seed1.galilel.org")); // 1st DNS Seeder from mbroemme
+        vSeeds.push_back(CDNSSeedData("seed2.galilel.org", "seed2.galilel.org")); // 2nd DNS Seeder from mbroemme
+        vSeeds.push_back(CDNSSeedData("seed3.galilel.org", "seed3.galilel.org")); // 3rd DNS Seeder from mbroemme
+        vSeeds.push_back(CDNSSeedData("seed4.galilel.org", "seed4.galilel.org")); // 4th DNS Seeder from mbroemme
+        vSeeds.push_back(CDNSSeedData("seed5.galilel.org", "seed5.galilel.org")); // 5th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed6.galilel.org", "seed6.galilel.org")); // 6th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed7.galilel.org", "seed7.galilel.org")); // 7th DNS Seeder from gridscale.io
+        vSeeds.push_back(CDNSSeedData("seed8.galilel.org", "seed8.galilel.org")); // 8th DNS Seeder from gridscale.io
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 68);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 16);
@@ -281,14 +281,14 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        vSeeds.push_back(CDNSSeedData("seed1.testnet.galilel.cloud", "seed1.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed2.testnet.galilel.cloud", "seed2.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed3.testnet.galilel.cloud", "seed3.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed4.testnet.galilel.cloud", "seed4.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed5.testnet.galilel.cloud", "seed5.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed6.testnet.galilel.cloud", "seed6.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed7.testnet.galilel.cloud", "seed7.testnet.galilel.cloud"));
-        vSeeds.push_back(CDNSSeedData("seed8.testnet.galilel.cloud", "seed8.testnet.galilel.cloud"));
+        vSeeds.push_back(CDNSSeedData("seed1.testnet.galilel.org", "seed1.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed2.testnet.galilel.org", "seed2.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed3.testnet.galilel.org", "seed3.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed4.testnet.galilel.org", "seed4.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed5.testnet.galilel.org", "seed5.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed6.testnet.galilel.org", "seed6.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed7.testnet.galilel.org", "seed7.testnet.galilel.org"));
+        vSeeds.push_back(CDNSSeedData("seed8.testnet.galilel.org", "seed8.testnet.galilel.org"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);  // Testnet galilel addresses start with 'a'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 18);  // Testnet galilel script addresses start with '8' or '9'

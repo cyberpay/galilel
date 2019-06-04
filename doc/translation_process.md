@@ -158,7 +158,7 @@ compiled extension), and not `.ts`.
 ### Questions and general assistance
 
 The Galilel translation maintainers include *mbroemme*. You can find them, and
-others, in the [Galilel Discord](https://discord.galilel.cloud).
+others, in the [Galilel Discord](https://discord.galilel.org).
 
 Announcements will be posted during application pre-releases to notify
 translators to check for updates.
