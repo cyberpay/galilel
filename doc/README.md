@@ -51,7 +51,7 @@ or drag Galilel-Qt to your applications folder and then run Galilel-Qt.
 
 ### Help
 
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=4238243)
+* Ask for help on [BitcoinTalk](https://bitcointalk.galilel.org)
 * Join our Discord server [Discord Server](https://discord.galilel.org)
 
 # Building
@@ -76,7 +76,7 @@ The Galilel repo's [root README](https://github.com/Galilel-Project/galilel/blob
 
 ### Resources
 
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=4238243) forum.
+* Discuss on the [BitcoinTalk](https://bitcointalk.galilel.org) forum.
 
 ### Miscellaneous
 

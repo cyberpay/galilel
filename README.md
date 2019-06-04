@@ -128,7 +128,7 @@ Block Explorer 2 (Mainnet Aiodex): https://explorer.aiodex.com/GALI
 
 Block Explorer (Testnet): https://explorer.testnet.galilel.org/
 
-BitcoinTalk Announcement: https://bittcointalk.galilel.org
+BitcoinTalk Announcement: https://bitcointalk.galilel.org
 
 Twitter: https://twitter.com/GalilelEN
 
