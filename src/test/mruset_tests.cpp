@@ -10,6 +10,7 @@
 
 #include "random.h"
 #include "util.h"
+#include "test/test_galilel.h"
 
 #include <set>
 
@@ -38,7 +39,7 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_SUITE(mruset_tests)
+BOOST_FIXTURE_TEST_SUITE(mruset_tests, BasicTestingSetup)
 
 // Test that an mruset behaves like a set, as long as no more than MAX_SIZE elements are in it
 BOOST_AUTO_TEST_CASE(mruset_like_set)

@@ -9,6 +9,7 @@
 #include "main.h"
 #include "random.h"
 #include "util.h"
+#include "test/test_galilel.h"
 
 #include <vector>
 
@@ -16,7 +17,7 @@
 
 #define SKIPLIST_LENGTH 300000
 
-BOOST_AUTO_TEST_SUITE(skiplist_tests)
+BOOST_FIXTURE_TEST_SUITE(skiplist_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(skiplist_test)
 {
