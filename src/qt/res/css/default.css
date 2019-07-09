@@ -1708,7 +1708,7 @@ QWidget#GovernancePage .ProposalFrame {
 
 QWidget#GovernancePage .ProposalFrame#proposalFrame {
     background-color:qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #bca389, stop: 1 #d5c6b6);
-    border:1px solid #b396f6;
+    border:1px solid #c9b5a0;
 }
 
 QWidget#GovernancePage .ProposalFrame#proposalFramePassing {
