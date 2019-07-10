@@ -7,16 +7,21 @@
 export LC_ALL=C.UTF-8
 
 travis_retry docker pull "${DOCKER_NAME_TAG}"
-env | grep -E '^(CCACHE_|WINEDEBUG|LC_ALL|BOOST_TEST_RANDOM|CONFIG_SHELL)' | tee /tmp/env
+env | grep -E '^(BITCOIN_CONFIG|CCACHE_|WINEDEBUG|LC_ALL|BOOST_TEST_RANDOM|CONFIG_SHELL)' | tee /tmp/env
 
-case "${HOST}" in
-    *"-mingw32")
-        DOCKER_ID=$(docker run --cap-add SYS_ADMIN -idt --mount "type=bind,src=${TRAVIS_BUILD_DIR},dst=${TRAVIS_BUILD_DIR}" --mount "type=bind,src=${CCACHE_DIR},dst=${CCACHE_DIR}" -w "${TRAVIS_BUILD_DIR}" --env-file /tmp/env "${DOCKER_NAME_TAG}")
-    ;;
-    *)
-        DOCKER_ID=$(docker run -idt --mount "type=bind,src=${TRAVIS_BUILD_DIR},dst=${TRAVIS_BUILD_DIR}" --mount "type=bind,src=${CCACHE_DIR},dst=${CCACHE_DIR}" -w "${TRAVIS_BUILD_DIR}" --env-file /tmp/env "${DOCKER_NAME_TAG}")
-    ;;
-esac
+if [[ "${HOST}" = *"-mingw32" ]] ; then
+    DOCKER_ADMIN="--cap-add SYS_ADMIN"
+elif [[ "${BITCOIN_CONFIG}" == *"--with-sanitizers="*"address"* ]] ; then
+
+    # If ran with (ASan + LSan), Docker needs access to ptrace (https://github.com/google/sanitizers/issues/764)
+    DOCKER_ADMIN="--cap-add SYS_PTRACE"
+fi
+
+if [ -n "${DOCKER_ADMIN}" ] ; then
+    DOCKER_ID=$(docker run --cap-add "${DOCKER_ADMIN}" -idt --mount "type=bind,src=${TRAVIS_BUILD_DIR},dst=${TRAVIS_BUILD_DIR}" --mount "type=bind,src=${CCACHE_DIR},dst=${CCACHE_DIR}" -w "${TRAVIS_BUILD_DIR}" --env-file /tmp/env "${DOCKER_NAME_TAG}")
+else
+    DOCKER_ID=$(docker run -idt --mount "type=bind,src=${TRAVIS_BUILD_DIR},dst=${TRAVIS_BUILD_DIR}" --mount "type=bind,src=${CCACHE_DIR},dst=${CCACHE_DIR}" -w "${TRAVIS_BUILD_DIR}" --env-file /tmp/env "${DOCKER_NAME_TAG}")
+fi
 
 DOCKER_EXEC () {
     docker exec "${DOCKER_ID}" bash -c "cd ${PWD} && $*"
