@@ -11,6 +11,7 @@
 #include "script/script.h"
 #include "script/standard.h"
 #include "uint256.h"
+#include "test_galilel.h"
 
 #include <vector>
 
@@ -26,7 +27,7 @@ Serialize(const CScript& s)
     return sSerialized;
 }
 
-BOOST_AUTO_TEST_SUITE(sigopcount_tests)
+BOOST_FIXTURE_TEST_SUITE(sigopcount_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(GetSigOpCount)
 {

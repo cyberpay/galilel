@@ -20,6 +20,8 @@
 #include "serialize.h"
 #include "util.h"
 
+#include "test/test_galilel.h"
+
 #include <stdint.h>
 
 #include <boost/assign/list_of.hpp> // for 'map_list_of()'
@@ -44,7 +46,7 @@ CService ip(uint32_t i)
     return CService(CNetAddr(s), Params().GetDefaultPort());
 }
 
-BOOST_AUTO_TEST_SUITE(DoS_tests)
+BOOST_FIXTURE_TEST_SUITE(DoS_tests, TestingSetup)
 
 BOOST_AUTO_TEST_CASE(DoS_banning)
 {
