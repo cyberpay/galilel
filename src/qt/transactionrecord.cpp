@@ -14,7 +14,9 @@
 #include "timedata.h"
 #include "wallet/wallet.h"
 #include "zgalichain.h"
+#include "main.h"
 
+#include <iostream>
 #include <stdint.h>
 
 /* Return positive answer if transaction should be shown in list.
@@ -46,8 +48,18 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
 
     if (wtx.HasZerocoinSpendInputs()) {
         // a zerocoin spend that was created by this wallet
-        libzerocoin::CoinSpend zcspend = TxInToZerocoinSpend(wtx.vin[0]);
-        fZSpendFromMe = wallet->IsMyZerocoinSpend(zcspend.getCoinSerialNumber());
+        if (wtx.HasZerocoinPublicSpendInputs()) {
+            libzerocoin::ZerocoinParams* params = Params().Zerocoin_Params(false);
+            PublicCoinSpend publicSpend(params);
+            CValidationState state;
+            if (!ZGALIModule::ParseZerocoinPublicSpend(wtx.vin[0], wtx, state, publicSpend)){
+                throw std::runtime_error("Error parsing zc public spend");
+            }
+            fZSpendFromMe = wallet->IsMyZerocoinSpend(publicSpend.getCoinSerialNumber());
+        } else {
+            libzerocoin::CoinSpend zcspend = TxInToZerocoinSpend(wtx.vin[0]);
+            fZSpendFromMe = wallet->IsMyZerocoinSpend(zcspend.getCoinSerialNumber());
+        }
     }
 
     if (wtx.IsCoinStake()) {

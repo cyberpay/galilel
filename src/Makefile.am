@@ -184,6 +184,7 @@ BITCOIN_CORE_H = \
   zgali/zerocoin.h \
   zgali/zgalitracker.h \
   zgali/zgaliwallet.h \
+  zgali/zgalimodule.h \
   genwit.h \
   concurrentqueue.h \
   lightzgalithread.h \
@@ -280,6 +281,7 @@ libbitcoin_wallet_a_SOURCES = \
   zgali/zgalitracker.cpp \
   stakeinput.cpp \
   genwit.cpp \
+  zgali/zgalimodule.cpp \
   lightzgalithread.cpp \
   $(BITCOIN_CORE_H)
 

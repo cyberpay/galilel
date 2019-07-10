@@ -2771,6 +2771,10 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
             "\nAs a json rpc call\n" +
             HelpExampleRpc("mintzerocoin", "13, \"[{\\\"txid\\\":\\\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\\\",\\\"vout\\\":1}]\""));
 
+
+    if (Params().NetworkID() != CBaseChainParams::REGTEST)
+        throw JSONRPCError(RPC_WALLET_ERROR, "zGALI minting is DISABLED");
+
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if (params.size() == 1)
@@ -2855,6 +2859,7 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
             "3. minimizechange  (boolean, required) Try to minimize the returning change  [false]\n"
             "4. \"address\"     (string, optional, default=change) Send to specified address or to a new change address.\n"
             "                       If there is change then an address is required\n"
+            "5. ispublicspend (boolean, optional, default=true) create a public zc spend instead of use the old code (only for regression tests)"
 
             "\nResult:\n"
             "{\n"
@@ -2892,12 +2897,19 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
 
     CAmount nAmount = AmountFromValue(params[0]);   // Spending amount
     bool fMintChange = params[1].get_bool();        // Mint change to zGALI
+    if (fMintChange && Params().NetworkID() != CBaseChainParams::REGTEST)
+        throw JSONRPCError(RPC_WALLET_ERROR, "zGALI minting is DISABLED, cannot mint change");
     bool fMinimizeChange = params[2].get_bool();    // Minimize change
     std::string address_str = params.size() > 3 ? params[3].get_str() : "";
+    bool ispublicspend = params.size() > 4 ? params[3].get_bool() : true;
 
     vector<CZerocoinMint> vMintsSelected;
 
-    return DoZgaliSpend(nAmount, fMintChange, fMinimizeChange, vMintsSelected, address_str);
+    if (!ispublicspend && Params().NetworkID() != CBaseChainParams::REGTEST) {
+        throw JSONRPCError(RPC_WALLET_ERROR, "zGALI old spend only available in regtest for tests purposes");
+    }
+
+    return DoZgaliSpend(nAmount, fMintChange, fMinimizeChange, vMintsSelected, address_str, ispublicspend);
 }
 
 
@@ -2995,8 +3007,12 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
 }
 
 
-extern UniValue DoZgaliSpend(const CAmount nAmount, bool fMintChange, bool fMinimizeChange, vector<CZerocoinMint>& vMintsSelected, std::string address_str)
+extern UniValue DoZgaliSpend(const CAmount nAmount, bool fMintChange, bool fMinimizeChange, vector<CZerocoinMint>& vMintsSelected, std::string address_str, bool ispublicspend)
 {
+    // zerocoin MINT is disabled. fMintChange should be false here. Double check
+    if (fMintChange && Params().NetworkID() != CBaseChainParams::REGTEST)
+        throw JSONRPCError(RPC_WALLET_ERROR, "zGALI minting is DISABLED, cannot mint change");
+
     int64_t nTimeStart = GetTimeMillis();
     CBitcoinAddress address = CBitcoinAddress(); // Optional sending address. Dummy initialization here.
     CWalletTx wtx;
@@ -3007,9 +3023,9 @@ extern UniValue DoZgaliSpend(const CAmount nAmount, bool fMintChange, bool fMini
         address = CBitcoinAddress(address_str);
         if(!address.IsValid())
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid GALI address");
-        fSuccess = pwalletMain->SpendZerocoin(nAmount, wtx, receipt, vMintsSelected, fMintChange, fMinimizeChange, &address);
+        fSuccess = pwalletMain->SpendZerocoin(nAmount, wtx, receipt, vMintsSelected, fMintChange, fMinimizeChange, &address, ispublicspend);
     } else                   // Spend to newly generated local address
-        fSuccess = pwalletMain->SpendZerocoin(nAmount, wtx, receipt, vMintsSelected, fMintChange, fMinimizeChange);
+        fSuccess = pwalletMain->SpendZerocoin(nAmount, wtx, receipt, vMintsSelected, fMintChange, fMinimizeChange, nullptr, ispublicspend);
 
     if (!fSuccess)
         throw JSONRPCError(RPC_WALLET_ERROR, receipt.GetStatusMessage());

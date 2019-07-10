@@ -145,6 +145,9 @@ public:
         nEnforceNewSporkKey = 1553907600;		/* Sat Mar 30 01:00:00 UTC 2019: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1554080400;		/* Mon Apr  1 01:00:00 UTC 2019: after that reject old spork key */
 
+        // Public coin spend enforcement
+        nPublicZCSpends = 626000;
+
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
          * be spent as it did not originally exist in the database.
@@ -217,6 +220,7 @@ public:
             "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
             "31438167899885040445364023527381951378636564391212010397122822120720357";
         nMaxZerocoinSpendsPerTransaction = 7; // Assume about 20kb each
+        nMaxZerocoinPublicSpendsPerTransaction = 500; // Assume about 220 bytes each input
         nMinZerocoinMintFee = 1 * CENT; // high fee required for zerocoin mints
         nMintRequiredConfirmations = 20; // the maximum amount of confirmations until accumulated in 19
         nRequiredAccumulation = 1;
@@ -271,6 +275,9 @@ public:
         nBlockZerocoinV2 = 2181;			/* First mint at block 312 */
         nEnforceNewSporkKey = 1553907600;		/* Sat Mar 30 01:00:00 UTC 2019: sporks signed after must use the new spork key */
         nRejectOldSporkKey = 1554080400;		/* Mon Apr  1 01:00:00 UTC 2019: after that reject old spork key */
+
+        // Public coin spend enforcement
+        nPublicZCSpends = 232000;
 
         /* Testnet genesis block. */
         genesis.nTime = 1540587600;			/* Testnet started: Fri Oct 26 21:00:00 UTC 2018 */
@@ -359,6 +366,9 @@ public:
         nBlockZerocoinV2 = 300;
         nZerocoinStartTime = 1540587600;
         nBlockEnforceSerialRange = 300; //Enforce serial range starting this block
+
+        // Public coin spend enforcement
+        nPublicZCSpends = 350;
 
         // Modify the regtest genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1540587600;

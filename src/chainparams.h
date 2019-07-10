@@ -109,6 +109,7 @@ public:
     std::string Zerocoin_Modulus() const { return zerocoinModulus; }
     libzerocoin::ZerocoinParams* Zerocoin_Params(bool useModulusV1) const;
     int Zerocoin_MaxSpendsPerTransaction() const { return nMaxZerocoinSpendsPerTransaction; }
+    int Zerocoin_MaxPublicSpendsPerTransaction() const { return nMaxZerocoinPublicSpendsPerTransaction; }
     CAmount Zerocoin_MintFee() const { return nMinZerocoinMintFee; }
     int Zerocoin_MintRequiredConfirmations() const { return nMintRequiredConfirmations; }
     int Zerocoin_RequiredAccumulation() const { return nRequiredAccumulation; }
@@ -124,6 +125,7 @@ public:
     int Zerocoin_Block_EnforceSerialRange() const { return nBlockEnforceSerialRange; }
     int Zerocoin_StartTime() const { return nZerocoinStartTime; }
     int Zerocoin_Block_V2_Start() const { return nBlockZerocoinV2; }
+    int Zerocoin_Block_Public_Spend_Enabled() const { return nPublicZCSpends; }
 
     /** Development Budget **/
     int Budget_SuperBlocks() const { return nBudgetSuperBlocks; };
@@ -175,6 +177,7 @@ protected:
     CAmount nRequiredMasternodeCollateral;
     std::string zerocoinModulus;
     int nMaxZerocoinSpendsPerTransaction;
+    int nMaxZerocoinPublicSpendsPerTransaction;
     CAmount nMinZerocoinMintFee;
     int nMintRequiredConfirmations;
     int nRequiredAccumulation;
@@ -189,6 +192,7 @@ protected:
     int nBlockFirstMint;
     int nBlockEnforceSerialRange;
     int nBlockZerocoinV2;
+    int nPublicZCSpends;
 
     int nBudgetSuperBlocks;
 };
