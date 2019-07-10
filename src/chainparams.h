@@ -127,6 +127,7 @@ public:
 
     /** Development Budget **/
     int Budget_SuperBlocks() const { return nBudgetSuperBlocks; };
+    int64_t GetProposalEstablishmentTime() const { return nProposalEstablishmentTime; }
 
 protected:
     CChainParams() {}
@@ -182,6 +183,7 @@ protected:
     int64_t nBudgetFeeConfirmations;
     int nZerocoinStartTime;
     int nZerocoinRequiredStakeDepth;
+    int64_t nProposalEstablishmentTime;
 
     int nBlockFirstGoodChecksum;
     int nBlockFirstMint;
