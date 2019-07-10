@@ -252,11 +252,21 @@ std::string ReindexZerocoinDB()
                     //Record Serials
                     if (tx.HasZerocoinSpendInputs()) {
                         for (auto& in : tx.vin) {
-                            if (!in.IsZerocoinSpend())
+                            bool isPublicSpend = in.IsZerocoinPublicSpend();
+                            if (!in.IsZerocoinSpend() && !isPublicSpend)
                                 continue;
-
-                            libzerocoin::CoinSpend spend = TxInToZerocoinSpend(in);
-                            vSpendInfo.push_back(make_pair(spend, txid));
+                            if (isPublicSpend) {
+                                libzerocoin::ZerocoinParams* params = Params().Zerocoin_Params(false);
+                                PublicCoinSpend publicSpend(params);
+                                CValidationState state;
+                                if (!ZGALIModule::ParseZerocoinPublicSpend(in, tx, state, publicSpend)){
+                                    return _("Failed to parse public spend");
+                                }
+                                vSpendInfo.push_back(make_pair(publicSpend, txid));
+                            } else {
+                                libzerocoin::CoinSpend spend = TxInToZerocoinSpend(in);
+                                vSpendInfo.push_back(make_pair(spend, txid));
+                            }
                         }
                     }
 
@@ -343,7 +353,8 @@ std::list<libzerocoin::CoinDenomination> ZerocoinSpendListFromBlock(const CBlock
             continue;
 
         for (const CTxIn& txin : tx.vin) {
-            if (!txin.IsZerocoinSpend())
+            bool isPublicSpend = txin.IsZerocoinPublicSpend();
+            if (!txin.IsZerocoinSpend() && !isPublicSpend)
                 continue;
 
             libzerocoin::CoinDenomination c = libzerocoin::IntToZerocoinDenomination(txin.nSequence);
