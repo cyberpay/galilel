@@ -2157,6 +2157,7 @@ bool CWallet::SelectStakeCoins(std::list<std::unique_ptr<CStakeInput> >& listInp
         }
     }
 
+    /* Disable zGALI Staking
     //zGALI
     if ((GetBoolArg("-zgalistake", true) || fPrecompute) && chainActive.Height() > Params().Zerocoin_Block_V2_Start() && !IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
         //Only update zGALI set once per update interval
@@ -2186,7 +2187,7 @@ bool CWallet::SelectStakeCoins(std::list<std::unique_ptr<CStakeInput> >& listInp
             }
         }
     }
-
+    */
     return true;
 }
 
