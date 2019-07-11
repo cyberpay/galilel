@@ -10,11 +10,11 @@ travis_retry docker pull "${DOCKER_NAME_TAG}"
 env | grep -E '^(BITCOIN_CONFIG|CCACHE_|WINEDEBUG|LC_ALL|BOOST_TEST_RANDOM|CONFIG_SHELL)' | tee /tmp/env
 
 if [[ "${HOST}" = *"-mingw32" ]] ; then
-    DOCKER_ADMIN="--cap-add SYS_ADMIN"
+    DOCKER_ADMIN="SYS_ADMIN"
 elif [[ "${BITCOIN_CONFIG}" == *"--with-sanitizers="*"address"* ]] ; then
 
     # If ran with (ASan + LSan), Docker needs access to ptrace (https://github.com/google/sanitizers/issues/764)
-    DOCKER_ADMIN="--cap-add SYS_PTRACE"
+    DOCKER_ADMIN="SYS_PTRACE"
 fi
 
 if [ -n "${DOCKER_ADMIN}" ] ; then
