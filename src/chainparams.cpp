@@ -358,7 +358,7 @@ public:
         nTargetTimespan = 24 * 60 * 60; // GALI: 1 day
         nTargetSpacing = 1 * 60;        // GALI: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        nLastPOWBlock = 200;
+        nLastPOWBlock = 250;
         nMaturity = 99;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 0;

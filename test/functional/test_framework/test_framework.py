@@ -406,21 +406,27 @@ class BitcoinTestFramework():
             for node in self.nodes:
                 node.wait_for_rpc_connection()
 
-            # Create a 200-block-long chain; each of the 4 first nodes
-            # gets 25 mature blocks and 25 immature.
+            # Create a 199-block-long chain.
+            # 1st node gets 24 mature and 24 immature blocks.
+            # 2nd, 3rd and 4th gets 25 mature and 25 immature blocks.
+            #
             # Note: To preserve compatibility with older versions of
             # initialize_chain, only 4 nodes will generate coins.
             #
-            # blocks are created with timestamps 10 minutes apart
-            # starting from 2010 minutes in the past
+            # Blocks are created with timestamps 10 minutes apart
+            # starting from 2010 minutes in the past.
             self.enable_mocktime()
             block_time = self.mocktime - (201 * 60)
             for i in range(2):
                 for peer in range(4):
-                    for j in range(25):
+
+                    # This is special case for gali with maturity 99.
+                    blocks = 25 if peer > 0 or i > 0 else 24
+                    for j in range(blocks):
                         set_node_times(self.nodes, block_time)
                         self.nodes[peer].generate(1)
                         block_time += 60
+
                     # Must sync before next peer starts generating blocks
                     sync_blocks(self.nodes)
 

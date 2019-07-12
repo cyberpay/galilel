@@ -1957,9 +1957,15 @@ int64_t GetBlockValue(int nHeight)
 {
     int64_t nSubsidy = 0;
 
+    /* make functional tests working. */
     if (Params().NetworkID() == CBaseChainParams::REGTEST) {
-        if (nHeight == 0)
+        if (nHeight <= Params().LAST_POW_BLOCK())
             return 100 * COIN;
+    }
+
+    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
+        if (nHeight == 1)
+            return 1 * COIN;
     }
 
     /* block rewards. */
@@ -1988,11 +1994,7 @@ int64_t GetBlockValue(int nHeight)
     } else if (nHeight > 1) {
         nSubsidy = 220000 * COIN;
     } else if (nHeight == 1) {
-        if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-            nSubsidy = 1 * COIN;
-        } else {
-            nSubsidy = 50 * COIN;
-        }
+        nSubsidy = 50 * COIN;
     }
 
     return nSubsidy;
@@ -4050,7 +4052,7 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
 
     unsigned int nBitsRequired = GetNextWorkRequired(pindexPrev, &block);
 
-    if ((Params().NetworkID() != CBaseChainParams::REGTEST) && block.IsProofOfWork() && (pindexPrev->nHeight + 1 <= 68589)) {
+    if ((Params().NetworkID() != CBaseChainParams::REGTEST) && block.IsProofOfWork()) {
         double n1 = ConvertBitsToDouble(block.nBits);
         double n2 = ConvertBitsToDouble(nBitsRequired);
 
