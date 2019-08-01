@@ -407,7 +407,7 @@ class BitcoinTestFramework():
                 node.wait_for_rpc_connection()
 
             # Create a 199-block-long chain.
-            # 1st node gets 24 mature and 24 immature blocks.
+            # 1st node gets 24 mature and 25 immature blocks.
             # 2nd, 3rd and 4th gets 25 mature and 25 immature blocks.
             #
             # Note: To preserve compatibility with older versions of
