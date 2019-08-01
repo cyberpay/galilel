@@ -1287,7 +1287,7 @@ UniValue getmintsinblocks(const UniValue& params, bool fHelp) {
                 HelpExampleRpc("getmintsinblocks", "1200000, 1000, 5"));
 
     int heightStart, heightEnd;
-    validaterange(params, heightStart, heightEnd, Params().Zerocoin_StartHeight());
+    validaterange(params, heightStart, heightEnd, Params().Zerocoin_Block_V2_Start());
 
     int d = params[2].get_int();
     libzerocoin::CoinDenomination denom = libzerocoin::IntToZerocoinDenomination(d);
@@ -1334,7 +1334,7 @@ UniValue getserials(const UniValue& params, bool fHelp) {
             HelpExampleRpc("getserials", "1254000, 1000"));
 
     int heightStart, heightEnd;
-    validaterange(params, heightStart, heightEnd, Params().Zerocoin_StartHeight());
+    validaterange(params, heightStart, heightEnd, Params().Zerocoin_Block_V2_Start());
 
     bool fVerbose = false;
     if (params.size() > 2) {
