@@ -9,7 +9,6 @@
 
 #include "chain.h"
 
-using namespace std;
 
 /**
  * CChain implementation

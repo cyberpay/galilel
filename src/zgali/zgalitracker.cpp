@@ -15,7 +15,6 @@
 #include "zgali/zgaliwallet.h"
 #include "witness.h"
 
-using namespace std;
 
 CzGALITracker::CzGALITracker(std::string strWalletFile)
 {
@@ -138,7 +137,7 @@ bool CzGALITracker::ClearSpendCache()
 
 std::vector<uint256> CzGALITracker::GetSerialHashes()
 {
-    vector<uint256> vHashes;
+    std::vector<uint256> vHashes;
     for (auto it : mapSerialHashes) {
         if (it.second.isArchived)
             continue;
@@ -156,7 +155,7 @@ CAmount CzGALITracker::GetBalance(bool fConfirmedOnly, bool fUnconfirmedOnly) co
     //! zerocoin specific fields
     std::map<libzerocoin::CoinDenomination, unsigned int> myZerocoinSupply;
     for (auto& denom : libzerocoin::zerocoinDenomList) {
-        myZerocoinSupply.insert(make_pair(denom, 0));
+        myZerocoinSupply.insert(std::make_pair(denom, 0));
     }
 
     {
@@ -189,7 +188,7 @@ CAmount CzGALITracker::GetUnconfirmedBalance() const
 
 std::vector<CMintMeta> CzGALITracker::GetMints(bool fConfirmedOnly) const
 {
-    vector<CMintMeta> vMints;
+    std::vector<CMintMeta> vMints;
     for (auto& it : mapSerialHashes) {
         CMintMeta mint = it.second;
         if (mint.isArchived || mint.isUsed)
@@ -355,7 +354,7 @@ void CzGALITracker::SetPubcoinUsed(const uint256& hashPubcoin, const uint256& tx
         return;
     CMintMeta meta = GetMetaFromPubcoin(hashPubcoin);
     meta.isUsed = true;
-    mapPendingSpends.insert(make_pair(meta.hashSerial, txid));
+    mapPendingSpends.insert(std::make_pair(meta.hashSerial, txid));
     UpdateState(meta);
 }
 

@@ -128,7 +128,7 @@ bool CZGaliStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
     return true;
 }
 
-bool CZGaliStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool CZGaliStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
 {
     //Create an output returning the zGALI that was staked
     CTxOut outReward;
@@ -220,9 +220,9 @@ CAmount CGaliStake::GetValue()
     return txFrom.vout[nPosition].nValue;
 }
 
-bool CGaliStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool CGaliStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
 {
-    vector<valtype> vSolutions;
+    std::vector<valtype> vSolutions;
     txnouttype whichType;
     CScript scriptPubKeyKernel = txFrom.vout[nPosition].scriptPubKey;
     if (!Solver(scriptPubKeyKernel, whichType, vSolutions)) {

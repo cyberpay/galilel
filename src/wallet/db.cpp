@@ -25,8 +25,6 @@
 #include <boost/thread.hpp>
 #include <boost/version.hpp>
 
-using namespace std;
-using namespace boost;
 
 
 unsigned int nWalletDBUpdated;
@@ -124,7 +122,7 @@ bool CDBEnv::Open(const boost::filesystem::path& pathIn)
 void CDBEnv::MakeMock()
 {
     if (fDbEnvInit)
-        throw runtime_error("CDBEnv::MakeMock : Already initialized");
+        throw std::runtime_error("CDBEnv::MakeMock : Already initialized");
 
     boost::this_thread::interruption_point();
 
@@ -147,7 +145,7 @@ void CDBEnv::MakeMock()
             DB_PRIVATE,
         S_IRUSR | S_IWUSR);
     if (ret > 0)
-        throw runtime_error(strprintf("CDBEnv::MakeMock : Error %d opening database environment.", ret));
+        throw std::runtime_error(strprintf("CDBEnv::MakeMock : Error %d opening database environment.", ret));
 
     fDbEnvInit = true;
     fMockDb = true;
@@ -179,7 +177,7 @@ bool CDBEnv::Salvage(std::string strFile, bool fAggressive, std::vector<CDBEnv::
     if (fAggressive)
         flags |= DB_AGGRESSIVE;
 
-    stringstream strDump;
+    std::stringstream strDump;
 
     Db db(dbenv, 0);
     int result = db.verify(strFile.c_str(), NULL, &strDump, flags);
@@ -203,7 +201,7 @@ bool CDBEnv::Salvage(std::string strFile, bool fAggressive, std::vector<CDBEnv::
     // ... repeated
     // DATA=END
 
-    string strLine;
+    std::string strLine;
     while (!strDump.eof() && strLine != "HEADER=END")
         getline(strDump, strLine); // Skip past header
 
@@ -212,7 +210,7 @@ bool CDBEnv::Salvage(std::string strFile, bool fAggressive, std::vector<CDBEnv::
         getline(strDump, keyHex);
         if (keyHex != "DATA=END") {
             getline(strDump, valueHex);
-            vResult.push_back(make_pair(ParseHex(keyHex), ParseHex(valueHex)));
+            vResult.push_back(std::make_pair(ParseHex(keyHex), ParseHex(valueHex)));
         }
     }
 
@@ -244,7 +242,7 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activ
     {
         LOCK(bitdb.cs_db);
         if (!bitdb.Open(GetDataDir()))
-            throw runtime_error("CDB : Failed to open database environment.");
+            throw std::runtime_error("CDB : Failed to open database environment.");
 
         strFile = strFilename;
         ++bitdb.mapFileUseCount[strFile];
@@ -257,7 +255,7 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activ
                 DbMpoolFile* mpf = pdb->get_mpf();
                 ret = mpf->set_flags(DB_MPOOL_NOFILE, 1);
                 if (ret != 0)
-                    throw runtime_error(strprintf("CDB : Failed to configure for no temp file backing for database %s", strFile));
+                    throw std::runtime_error(strprintf("CDB : Failed to configure for no temp file backing for database %s", strFile));
             }
 
             ret = pdb->open(NULL,                   // Txn pointer
@@ -272,10 +270,10 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activ
                 pdb = NULL;
                 --bitdb.mapFileUseCount[strFile];
                 strFile = "";
-                throw runtime_error(strprintf("CDB : Error %d, can't open database %s", ret, strFile));
+                throw std::runtime_error(strprintf("CDB : Error %d, can't open database %s", ret, strFile));
             }
 
-            if (fCreate && !Exists(string("version"))) {
+            if (fCreate && !Exists(std::string("version"))) {
                 bool fTmp = fReadOnly;
                 fReadOnly = false;
                 WriteVersion(CLIENT_VERSION);
@@ -317,7 +315,7 @@ void CDB::Close()
     }
 }
 
-void CDBEnv::CloseDb(const string& strFile)
+void CDBEnv::CloseDb(const std::string& strFile)
 {
     {
         LOCK(cs_db);
@@ -331,7 +329,7 @@ void CDBEnv::CloseDb(const string& strFile)
     }
 }
 
-bool CDBEnv::RemoveDb(const string& strFile)
+bool CDBEnv::RemoveDb(const std::string& strFile)
 {
     this->CloseDb(strFile);
 
@@ -340,7 +338,7 @@ bool CDBEnv::RemoveDb(const string& strFile)
     return (rc == 0);
 }
 
-bool CDB::Rewrite(const string& strFile, const char* pszSkip)
+bool CDB::Rewrite(const std::string& strFile, const char* pszSkip)
 {
     while (true) {
         {
@@ -353,7 +351,7 @@ bool CDB::Rewrite(const string& strFile, const char* pszSkip)
 
                 bool fSuccess = true;
                 LogPrintf("CDB::Rewrite : Rewriting %s...\n", strFile);
-                string strFileRes = strFile + ".rewrite";
+                std::string strFileRes = strFile + ".rewrite";
                 { // surround usage of db with extra {}
                     CDB db(strFile.c_str(), "r");
                     Db* pdbCopy = new Db(bitdb.dbenv, 0);
@@ -433,9 +431,9 @@ void CDBEnv::Flush(bool fShutdown)
         return;
     {
         LOCK(cs_db);
-        map<string, int>::iterator mi = mapFileUseCount.begin();
+        std::map<std::string, int>::iterator mi = mapFileUseCount.begin();
         while (mi != mapFileUseCount.end()) {
-            string strFile = (*mi).first;
+            std::string strFile = (*mi).first;
             int nRefCount = (*mi).second;
             LogPrint("db", "CDBEnv::Flush : Flushing %s (refcount = %d)...\n", strFile, nRefCount);
             if (nRefCount == 0) {

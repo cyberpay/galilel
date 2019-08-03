@@ -371,7 +371,7 @@ bool IsBlockHashInChain(const uint256& hashBlock);
 void RecalculateZGALISpent();
 void RecalculateZGALIMinted();
 bool RecalculateGALISupply(int nHeightStart);
-bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError);
+bool ReindexAccumulators(std::list<uint256>& listMissingCheckpoints, std::string& strError);
 
 // Public coin spend
 bool CheckPublicCoinSpendEnforced(int blockHeight, bool isPublicSpend);
