@@ -230,6 +230,9 @@ public:
 
         nBudgetSuperBlocks = 43200; // amount of blocks in a months period of time using 1 minutes per block
         nProposalEstablishmentTime = 60 * 60 * 24; // Proposals must be at least a day old to make it into a budget
+
+        // GALI features
+        strBootstrapUrl = "https://galilel.org/bootstrap/v3/mainnet";
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -326,6 +329,9 @@ public:
 
         nBudgetSuperBlocks = 120; // amount of blocks in a 2 hours period of time using 1 minutes per block
         nProposalEstablishmentTime = 60 * 5; // Proposals must be at least 5 mns old to make it into a test budget
+
+        // GALI features
+        strBootstrapUrl = "https://galilel.org/bootstrap/v3/testnet";
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {

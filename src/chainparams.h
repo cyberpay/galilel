@@ -128,8 +128,11 @@ public:
     int Zerocoin_Block_Public_Spend_Enabled() const { return nPublicZCSpends; }
 
     /** Development Budget **/
-    int Budget_SuperBlocks() const { return nBudgetSuperBlocks; };
+    int Budget_SuperBlocks() const { return nBudgetSuperBlocks; }
     int64_t GetProposalEstablishmentTime() const { return nProposalEstablishmentTime; }
+
+    /** GALI features **/
+    std::string GetBootstrapUrl() const { return strBootstrapUrl; };
 
 protected:
     CChainParams() {}
@@ -195,6 +198,9 @@ protected:
     int nPublicZCSpends;
 
     int nBudgetSuperBlocks;
+
+    // GALI features
+    std::string strBootstrapUrl;
 };
 
 /**
