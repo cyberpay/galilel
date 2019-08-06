@@ -4,7 +4,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-DIST_SUBDIRS = secp256k1 univalue
+DIST_SUBDIRS = secp256k1 univalue minizip
 
 AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS) $(GPROF_LDFLAGS) $(SANITIZER_LDFLAGS)
 AM_CXXFLAGS = $(DEBUG_CXXFLAGS) $(HARDENED_CXXFLAGS) $(WARN_CXXFLAGS) $(NOWARN_CXXFLAGS) $(ERROR_CXXFLAGS) $(GPROF_CXXFLAGS) $(SANITIZER_CXXFLAGS)
@@ -21,9 +21,14 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
+LIBMINIZIP = minizip/libminizip.la
+$(LIBMINIZIP):
+	@echo "Building minizip ..." && $(MAKE) -C $(@D) $(@F) CXX="$(CXX)" CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" OPT="$(AM_CXXFLAGS) $(PIE_FLAGS) $(CXXFLAGS) $(AM_CPPFLAGS) $(CPPFLAGS)"
+
 BITCOIN_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
+BITCOIN_INCLUDES += -I$(srcdir)/minizip
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
 LIBBITCOIN_SERVER=libbitcoin_server.a
@@ -78,6 +83,10 @@ endif
 .PHONY: FORCE check-symbols check-security
 # galilel core #
 BITCOIN_CORE_H = \
+  bootstrap/bootstrapmodel.h \
+  bootstrap/curl.h \
+  bootstrap/finally.h \
+  bootstrap/ziputil.h \
   activemasternode.h \
   addrman.h \
   alert.h \
@@ -396,6 +405,9 @@ libbitcoin_common_a_SOURCES = \
 libbitcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_util_a_SOURCES = \
+  bootstrap/bootstrapmodel.cpp \
+  bootstrap/curl.cpp \
+  bootstrap/ziputil.cpp \
   allocators.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
