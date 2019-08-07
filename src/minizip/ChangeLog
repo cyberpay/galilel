@@ -3,7 +3,7 @@ More changes since 1.1
 - Fixed error in AE-1 not testing CRC32
 
   Credits
-  
+
     Steven Christy
 
 Changes since 1.1
@@ -24,9 +24,9 @@ Change in 1.1
 - Added unzip patch for BZIP Compression method (patch create by Daniel Borca)
 - Added BZIP Compress method for zip
 - Did some refactoring and code cleanup
-   
+
  Credits
- 
+
   Gilles Vollant    - Original MiniZip author
   Even Rouault      - ZIP64 unzip Support
 
@@ -35,7 +35,7 @@ Change in 1.1
     - Decoration of symbol names unz* -> cpl_unz*
     - Remove old C style function prototypes
     - Add unzip support for ZIP64
-   
+
   Daniel Borca      - BZip Compression method support in unzip
   Mathias Svensson  - ZIP64 zip support ( http://result42.com )
 
@@ -57,9 +57,9 @@ Change in 1.1
       ZIP64 data is automaticly added to items that needs it, and existing ZIP64
       data need to be removed.
     - Added support for BZIP2 as compression mode (bzip2 lib is required)
-   
+
    Oct-2009 ioapi.x
-    - Defined ZPOS64_T to fpos_t on windows and u_int64_t on linux. 
+    - Defined ZPOS64_T to fpos_t on windows and u_int64_t on linux.
     - Change to fseeko64, ftello64 and fopen64 so large files would work on linux.
       More if/def section may be needed to support other platforms
     - Defined fxxxx64 calls to normal fopen/ftell/fseek so they would compile on windows.
@@ -136,4 +136,3 @@ Change unknown?
 - Added unzGetOffset (RX '2004)
 - Added unzGetFilePos & unzGoToFilePos (Ryan Haksi)
 - Added unzGetCurrentFileZStreamPos64 (GDAL)
-

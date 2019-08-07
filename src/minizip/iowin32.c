@@ -123,7 +123,7 @@ voidpf ZCALLBACK win32_open64_file_func (voidpf opaque, const void* filename, in
     iowin->filenameLength = _tcslen(filename) + 1;
     iowin->filename = (void*)malloc(iowin->filenameLength * sizeof(TCHAR));
     _tcsncpy(iowin->filename, filename, iowin->filenameLength);
-    return iowin; 
+    return iowin;
 }
 
 
@@ -214,7 +214,7 @@ voidpf ZCALLBACK win32_open_file_func (voidpf opaque,const char* filename,int mo
     iowin->filenameLength = _tcslen(filename) + 1;
     iowin->filename = (void*)malloc(iowin->filenameLength * sizeof(TCHAR));
     _tcsncpy(iowin->filename, filename, iowin->filenameLength);
-    return iowin; 
+    return iowin;
 }
 
 voidpf ZCALLBACK win32_opendisk64_file_func (voidpf opaque, voidpf stream, int number_disk, int mode)
@@ -231,7 +231,7 @@ voidpf ZCALLBACK win32_opendisk64_file_func (voidpf opaque, voidpf stream, int n
     _tcsncpy(diskFilename, iowin->filename, iowin->filenameLength);
     for (i = iowin->filenameLength - 1; i >= 0; i -= 1)
     {
-        if (diskFilename[i] != _T('.')) 
+        if (diskFilename[i] != _T('.'))
             continue;
         _sntprintf(&diskFilename[i], iowin->filenameLength - i, _T(".z%02d"), number_disk + 1);
         break;
@@ -256,7 +256,7 @@ voidpf ZCALLBACK win32_opendisk64_file_funcW (voidpf opaque, voidpf stream, int 
     wcsncpy(diskFilename, iowin->filename, iowin->filenameLength);
     for (i = iowin->filenameLength - 1; i >= 0; i -= 1)
     {
-        if (diskFilename[i] != L'.') 
+        if (diskFilename[i] != L'.')
             continue;
         _snwprintf(&diskFilename[i], (iowin->filenameLength + 10) - i, L".z%02d", number_disk + 1);
         break;
@@ -281,7 +281,7 @@ voidpf ZCALLBACK win32_opendisk64_file_funcA (voidpf opaque, voidpf stream, int 
     strncpy(diskFilename, iowin->filename, iowin->filenameLength);
     for (i = iowin->filenameLength - 1; i >= 0; i -= 1)
     {
-        if (diskFilename[i] != '.') 
+        if (diskFilename[i] != '.')
             continue;
         _snprintf(&diskFilename[i], iowin->filenameLength - i, ".z%02d", number_disk + 1);
         break;
@@ -306,7 +306,7 @@ voidpf ZCALLBACK win32_opendisk_file_func (voidpf opaque, voidpf stream, int num
     _tcsncpy(diskFilename, iowin->filename, iowin->filenameLength);
     for (i = iowin->filenameLength - 1; i >= 0; i -= 1)
     {
-        if (diskFilename[i] != _T('.')) 
+        if (diskFilename[i] != _T('.'))
             continue;
         _sntprintf(&diskFilename[i], iowin->filenameLength - i, _T(".z%02d"), number_disk + 1);
         break;

@@ -332,7 +332,7 @@ void ParseParameters(int argc, const char* const argv[])
 }
 
 bool DefinedArg(const std::string& strArg)
-{   
+{
     assert(!strArg.empty());
     return mapArgs.find(strArg) != mapArgs.end();
 }
