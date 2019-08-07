@@ -147,7 +147,7 @@ QString Intro::getDefaultDataDirectory()
     return GUIUtil::boostPathToQString(GetDefaultDataDir());
 }
 
-bool Intro::pickDataDirectory()
+bool Intro::pickDataDirectory(bool& bootstrap)
 {
     namespace fs = boost::filesystem;
     QSettings settings;
@@ -172,6 +172,7 @@ bool Intro::pickDataDirectory()
                 return false;
             }
             dataDir = intro.getDataDirectory();
+            bootstrap = intro.getBootstrapOption();
             try {
                 TryCreateDirectory(GUIUtil::qstringToBoostPath(dataDir));
                 break;
@@ -281,4 +282,9 @@ QString Intro::getPathToCheck()
     signalled = false; /* new request can be queued now */
     mutex.unlock();
     return retval;
+}
+
+bool Intro::getBootstrapOption() const
+{
+    return ui->bootstrapBlockchain->isChecked();
 }
