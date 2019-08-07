@@ -21,32 +21,22 @@
  * THE SOFTWARE.
  */
 
-#ifndef GALI_ZIPUTIL_H
-#define GALI_ZIPUTIL_H
+#include "context.h"
 
-#include <string>
-#include <vector>
+#include <exception>
+#include <boost/test/unit_test.hpp>
 
-/**
- * Create zip archive, add input file/folder to the archive.
- * Folder recursively added to the archive. Overwrite existing archive.
- *
- * @param strOutputPath[in] path to the output zip file
- * @param strInputPath[in] path to the input file/folder
- * @param err[out] error description in case of fail
- * @return true - success, false - fail, see err for details
- */
-bool ZipCreate(const std::string& strOutputPath, const std::string& strInputPath, std::string& err);
+BOOST_AUTO_TEST_SUITE(context_tests)
 
-/**
- * Extract zip archive into specified folder.
- * Overwrite existing files in the output folder.
- *
- * @param strInputPath[in] path to the input zip file
- * @param strOutputPath[in] path to the output folder
- * @param err[out] error description in case of fail
- * @return true - success, false - fail, see err for details
- */
-bool ZipExtract(const std::string& strInputPath, const std::string& strOutputPath, std::string& err);
+BOOST_AUTO_TEST_CASE(context_init_test)
+{
+    BOOST_CHECK_THROW(GetContext(), std::runtime_error);
 
-#endif /** GALI_ZIPUTIL_H */
+    CreateContext();
+    BOOST_CHECK_THROW(CreateContext(), std::runtime_error);
+
+    ReleaseContext();
+    BOOST_CHECK_THROW(GetContext(), std::runtime_error);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
