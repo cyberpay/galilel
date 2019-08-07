@@ -452,7 +452,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     openPeersAction->setStatusTip(tr("Show peers info"));
     openRepairAction = new QAction(QIcon(":/icons/options"), tr("Wallet &Repair"), this);
     openRepairAction->setStatusTip(tr("Show wallet repair options"));
-    openBootstrapAction = new QAction(QIcon(":/icons/options"), tr("&Blockchain Bootstrap"), this);
+    openBootstrapAction = new QAction(QIcon(":/icons/blockchain"), tr("&Blockchain Bootstrap"), this);
     openBootstrapAction->setStatusTip(tr("Reload blockchain from the cloud or file"));
     openConfEditorAction = new QAction(QIcon(":/icons/edit"), tr("Open Wallet &Configuration File"), this);
     openConfEditorAction->setStatusTip(tr("Open configuration file"));
