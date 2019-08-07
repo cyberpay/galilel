@@ -233,7 +233,7 @@ public:
         nProposalEstablishmentTime = 60 * 60 * 24; // Proposals must be at least a day old to make it into a budget
 
         // GALI features
-        strBootstrapUrl = "https://galilel.org/bootstrap/v3/mainnet";
+        strBootstrapUrl = "https://bootstrap.galilel.org/v3/mainnet";
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -332,7 +332,7 @@ public:
         nProposalEstablishmentTime = 60 * 5; // Proposals must be at least 5 mns old to make it into a test budget
 
         // GALI features
-        strBootstrapUrl = "https://galilel.org/bootstrap/v3/testnet";
+        strBootstrapUrl = "https://bootstrap.galilel.org/v3/testnet";
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
