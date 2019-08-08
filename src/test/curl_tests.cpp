@@ -22,6 +22,7 @@
  */
 
 #include "bootstrap/curl.h"
+#include "util.h"
 
 #include <string>
 #include <fstream>
@@ -45,8 +46,8 @@ BOOST_AUTO_TEST_CASE(curl_getredirect_test)
 
 BOOST_AUTO_TEST_CASE(curl_download_test)
 {
-    const CUrl url = "https://github.com/Galilel-Project/galilel/releases/download/v3.3.0/galilel-v3.3.0.tar.gz";
-    const std::string tmpFile("download.tmp");
+    const CUrl url = "https://raw.githubusercontent.com/Galilel-Project/galilel/master/README.md";
+    const std::string tmpFile(GetTempPath().string() + "/download.tmp");
     auto ProgressFn = [](double total, double now) { return 0; };
     std::string buff, err;
 
@@ -56,11 +57,12 @@ BOOST_AUTO_TEST_CASE(curl_download_test)
         BOOST_REQUIRE_MESSAGE(CURLDownloadToFile(url, tmpFile, ProgressFn, err), err);
         BOOST_CHECK_MESSAGE(err.empty(), err);
 
-        std::ifstream f(tmpFile);
+        std::ifstream f(tmpFile, std::ios::binary);
         std::string filebuff((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
+        f.close();
         BOOST_CHECK(buff == filebuff);
 
-        boost::filesystem::remove(tmpFile);
+        BOOST_REQUIRE(boost::filesystem::remove(tmpFile));
     }
 
     {/** test without progress fn */
@@ -69,11 +71,12 @@ BOOST_AUTO_TEST_CASE(curl_download_test)
         BOOST_REQUIRE_MESSAGE(CURLDownloadToFile(url, tmpFile, nullptr, err), err);
         BOOST_CHECK_MESSAGE(err.empty(), err);
 
-        std::ifstream f(tmpFile);
+        std::ifstream f(tmpFile, std::ios::binary);
         std::string filebuff((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
+        f.close();
         BOOST_CHECK(buff == filebuff);
 
-        boost::filesystem::remove(tmpFile);
+        BOOST_REQUIRE(boost::filesystem::remove(tmpFile));
     }
 
     /** test empty url */
@@ -92,7 +95,7 @@ BOOST_AUTO_TEST_CASE(curl_download_test)
     BOOST_CHECK(!CURLDownloadToFile("invalid_url", tmpFile, nullptr, err));
     BOOST_CHECK(!err.empty());
 
-    boost::filesystem::remove(tmpFile);
+    BOOST_REQUIRE(boost::filesystem::remove(tmpFile));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
