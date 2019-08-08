@@ -22,6 +22,7 @@
  */
 
 #include "bootstrap/ziputil.h"
+#include "util.h"
 #include "utiltime.h"
 #include "tinyformat.h"
 
@@ -43,55 +44,62 @@ BOOST_AUTO_TEST_SUITE(minizip_tests)
 BOOST_AUTO_TEST_CASE(zip_unzip_test)
 {
     std::string err;
-    const std::string datadir("test/data");
-    const std::string unzipdir("data_unzip");
-    const std::string zipfile("data.zip");
-
-    BOOST_REQUIRE(boost::filesystem::exists(datadir));
+    const std::string dataDir("test/data/zip");
+    const std::string zipFile("data.zip");
+    const std::string readmeFile = strprintf("%s/README.md", dataDir);
+    const std::string unzipDir = strprintf("%s/unzip", dataDir);
+    const std::string unzipFile = strprintf("%s/%s/README.md", unzipDir, dataDir);
 
     /** invalid data dir */
-    BOOST_CHECK_MESSAGE(!ZipCreate(zipfile, "not-exist-dir", err), err);
+    BOOST_CHECK_MESSAGE(!ZipCreate(zipFile, "not-exist-dir", err), err);
+
+    /** create temporary data directory */
+    BOOST_REQUIRE(boost::filesystem::create_directory(dataDir));
+
+    /** create file with content */
+    std::ofstream fReadme(readmeFile, std::ios_base::app);
+    fReadme << "some content";
+    fReadme.close();
 
     /** create zip */
-    BOOST_REQUIRE_MESSAGE(ZipCreate(zipfile, datadir, err), err);
-    time_t time1 = boost::filesystem::last_write_time(zipfile);
-    MilliSleep(1000); /** time1 resolution is seconds, so wait to get enough difference */
+    BOOST_REQUIRE_MESSAGE(ZipCreate(zipFile, dataDir, err), err);
+    time_t time1 = boost::filesystem::last_write_time(zipFile);
+
+    /** time1 resolution is seconds, so wait to get enough difference */
+    MilliSleep(1000);
 
     /** overwrite zip */
-    BOOST_REQUIRE_MESSAGE(ZipCreate(zipfile, datadir, err), err);
-    time_t time2 = boost::filesystem::last_write_time(zipfile);
+    BOOST_REQUIRE_MESSAGE(ZipCreate(zipFile, dataDir, err), err);
+    time_t time2 = boost::filesystem::last_write_time(zipFile);
 
     BOOST_CHECK(time2 > time1);
 
-    if (boost::filesystem::exists(unzipdir))
-        boost::filesystem::remove_all(unzipdir);
-    boost::filesystem::create_directory(unzipdir);
-
-    const std::string fOriginal = strprintf("%s/README.md", datadir);
-    const std::string fUnzipped = strprintf("%s/%s/README.md", unzipdir, datadir);
+    /** create unzip directory */
+    BOOST_REQUIRE(boost::filesystem::create_directory(unzipDir));
 
     /** extract */
-    BOOST_REQUIRE_MESSAGE(ZipExtract(zipfile, unzipdir, err), err);
-    BOOST_REQUIRE_MESSAGE(CompareFiles(fOriginal, fUnzipped), "files are not equal");
+    BOOST_REQUIRE_MESSAGE(ZipExtract(zipFile, unzipDir, err), err);
+    BOOST_REQUIRE_MESSAGE(CompareFiles(readmeFile, unzipFile), "files are not equal");
 
     /** modify unzipped file */
-    std::ofstream readme(fUnzipped, std::ios_base::app);
-    readme << "some content";
-    readme.close();
-    BOOST_REQUIRE(!CompareFiles(fOriginal, fUnzipped));
+    fReadme.open(unzipFile, std::ios_base::app);
+    fReadme << " with modification";
+    fReadme.close();
+    BOOST_REQUIRE(!CompareFiles(readmeFile, unzipFile));
 
     /** extract overwrite */
-    BOOST_REQUIRE_MESSAGE(ZipExtract(zipfile, unzipdir, err), err);
-    BOOST_REQUIRE_MESSAGE(CompareFiles(fOriginal, fUnzipped), "files are not equal");
+    BOOST_REQUIRE_MESSAGE(ZipExtract(zipFile, unzipDir, err), err);
+    BOOST_REQUIRE_MESSAGE(CompareFiles(readmeFile, unzipFile), "files are not equal");
 
     /** invalid input file */
-    BOOST_CHECK_MESSAGE(!ZipExtract("not-exist-file", unzipdir, err), err);
+    BOOST_CHECK_MESSAGE(!ZipExtract("not-exist-file", unzipDir, err), err);
 
     /** invalid output dir */
-    BOOST_CHECK_MESSAGE(!ZipExtract(zipfile, "not-exist-dir", err), err);
+    BOOST_CHECK_MESSAGE(!ZipExtract(zipFile, "not-exist-dir", err), err);
 
-    boost::filesystem::remove(zipfile);
-    boost::filesystem::remove_all(unzipdir);
+    /** remove temporary files and directories */
+    BOOST_REQUIRE(boost::filesystem::remove(zipFile));
+    BOOST_REQUIRE(boost::filesystem::remove_all(dataDir));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
