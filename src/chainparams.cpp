@@ -145,7 +145,7 @@ public:
         nRejectOldSporkKey = 1554080400;		/* Mon Apr  1 01:00:00 UTC 2019: after that reject old spork key */
 
         // Public coin spend enforcement
-        nPublicZCSpends = 626000;
+        nPublicZCSpends = 681000;
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
