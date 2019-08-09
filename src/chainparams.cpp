@@ -12,6 +12,7 @@
 #include "random.h"
 #include "util.h"
 #include "utilstrencodings.h"
+#include "clientversion.h"
 
 #include <assert.h>
 
@@ -230,6 +231,9 @@ public:
 
         nBudgetSuperBlocks = 43200; // amount of blocks in a months period of time using 1 minutes per block
         nProposalEstablishmentTime = 60 * 60 * 24; // Proposals must be at least a day old to make it into a budget
+
+        // GALI features
+        strBootstrapUrl = "https://bootstrap.galilel.org/v3/mainnet";
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -326,6 +330,9 @@ public:
 
         nBudgetSuperBlocks = 120; // amount of blocks in a 2 hours period of time using 1 minutes per block
         nProposalEstablishmentTime = 60 * 5; // Proposals must be at least 5 mns old to make it into a test budget
+
+        // GALI features
+        strBootstrapUrl = "https://bootstrap.galilel.org/v3/testnet";
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -441,6 +448,11 @@ CModifiableParams* ModifiableParams()
     return (CModifiableParams*)&unitTestParams;
 }
 
+bool ParamsSelected()
+{
+    return pCurrentParams != nullptr;
+}
+
 const CChainParams& Params()
 {
     assert(pCurrentParams);
@@ -478,4 +490,58 @@ bool SelectParamsFromCommandLine()
 
     SelectParams(network);
     return true;
+}
+
+uint64_t GetBlockChainSize()
+{
+    const uint64_t GB_BYTES = 1000000000LL;
+    return 1LL * GB_BYTES;
+}
+
+bool VerifyGenesisBlock(const std::string& datadir, const uint256& genesisHash, std::string& err)
+{
+    const std::string path = strprintf("%s/blocks/blk00000.dat", datadir);
+    FILE *fptr = fopen(path.c_str(), "rb");
+    if (!fptr) {
+        err = strprintf("Failed to open file: %s", path);
+        return false;
+    }
+
+    CAutoFile filein(fptr, SER_DISK, CLIENT_VERSION);
+    if (filein.IsNull()) {
+        err = strprintf("Open block file failed: %s", path);
+        return false;
+    }
+
+    char buf[MESSAGE_START_SIZE] = {0};
+    filein.read(buf, MESSAGE_START_SIZE);
+    if (memcmp(buf, Params().MessageStart(), MESSAGE_START_SIZE)) {
+        err = strprintf("Invalid magic numer %s in the file: %s", HexStr(buf, buf + MESSAGE_START_SIZE), path);
+        return false;
+    }
+
+    unsigned int nSize = 0;
+    filein >> nSize;
+    if (nSize < 80 || nSize > 2000000) {
+        err = strprintf("Invalid block size %u in the file: %s", nSize, path);
+        return false;
+    }
+
+    CBlock block;
+    try {
+
+        /** Read block */
+        filein >> block;
+    } catch (std::exception& e) {
+        err = strprintf("Deserialize or I/O error: %s", e.what());
+        return false;
+    }
+
+    /** Check block hash */
+    if (block.GetHash() != genesisHash) {
+        err = strprintf("Block hash %s does not match genesis block hash %s", block.GetHash().ToString(), genesisHash.ToString());
+        return false;
+    } else {
+        return true;
+    }
 }

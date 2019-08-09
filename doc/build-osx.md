@@ -35,7 +35,7 @@ sections below.
 ### Install dependencies using Homebrew
 
 ```
-brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 zmq libevent
+brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 zmq libevent curl
 ```
 
 ## Building galileld

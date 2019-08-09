@@ -35,6 +35,7 @@ libssl      | SSL Support        | Secure communications
 libboost    | Boost              | C++ Library
 libevent    | Events             | Asynchronous event notification
 libgmp      | Bignum Arithmetic  | Precision arithmetic
+libcurl4    | HTTP Download      | Cloud Bootstrap
 
 Optional dependencies:
 
